@@ -1,0 +1,110 @@
+import "./App.css";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import App from "./App.jsx";
+import AboutPage from "./routers/AboutPage.jsx";
+import PlanPage from "./routers/PlanPage.jsx";
+import EnrollPage from "./routers/EnrollPage.jsx";
+import ContactPage from "./routers/ContactPage.jsx";
+import ArticlesPage from "./routers/ArticlesPage.jsx";
+
+// 引入你的主頁面元件
+import Main from "./index_component/Main.jsx";
+
+// 引入你的所有活動子頁面元件
+import ExhibitionPage from "./routers/PlanFolder/ExhibitionPage.jsx";
+import WorkshopPage from "./routers/PlanFolder/WorkshopPage.jsx";
+import SingleWorkshopPage from "./routers/PlanFolder/SingleWorkshopPage.jsx";
+import MarketPage from "./routers/PlanFolder/MarketPage.jsx";
+import LecturePage from "./routers/PlanFolder/LecturePage.jsx";
+import OtherActivitiesPage from "./routers/PlanFolder/OtherActivitiesPage.jsx";
+import WorkshopListPage from "./routers/PlanFolder/WorkshopListPage.jsx";
+import ExhibitionListPage from "./routers/PlanFolder/ExhibitionListPage.jsx";
+
+const router = createBrowserRouter(
+	[
+		{
+			path: "/",
+			element: <App />, // App 應該包含 <Outlet /> 來渲染其 children
+			children: [
+				{
+					index: true,
+					element: <Main />, // 根路徑 /
+				},
+				{
+					path: "About",
+					element: <AboutPage />,
+				},
+				{
+					path: "Enroll",
+					element: <EnrollPage />,
+				},
+				{
+					path: "Contact",
+					element: <ContactPage />,
+				},
+				{
+					path: "Articles",
+					element: <ArticlesPage />,
+				},
+				// 由於你的 PlanPage 是固定的總覽頁，我們將所有子路由與 PlanPage 分開定義，
+				// 但為了保持 URL 階層，我們必須把 PlanPage 獨立出來，並移除第一個重複的 Plan 路由。
+
+				// 移除第一個重複的 { path: "Plan", element: <PlanPage /> }
+				// 我們將所有子路由都放在一個新的 Plan 父路由中，
+				// 並將 PlanPage 設定為 Plan 的 index 路由
+				{
+					path: "Plan", // 總父路由，用於所有 Plan 相關的 URL
+					children: [
+						{
+							index: true, // /Plan 路由
+							element: <PlanPage />,
+						},
+						{
+							path: "ExhibitionList",
+							element: <ExhibitionListPage />,
+						},
+						{
+							path: "ExhibitionList/2024-E001",
+							element: <ExhibitionPage />,
+						},
+						{
+							path: "Market",
+							element: <MarketPage />,
+						},
+						{
+							path: "Lecture",
+							element: <LecturePage />,
+						},
+						{
+							path: "Other",
+							element: <OtherActivitiesPage />,
+						},
+						{
+							path: "Workshop",
+							element: <WorkshopPage />,
+						},
+						{
+							path: "Workshop/List",
+							element: <WorkshopListPage />,
+						},
+						{
+							path: "Workshop/:workshopId",
+							element: <SingleWorkshopPage />,
+						},
+					],
+				},
+			],
+		},
+	],
+	{
+		basename: "/Tsio_Design",
+	}
+);
+
+createRoot(document.getElementById("root")).render(
+	<StrictMode>
+		<RouterProvider router={router} />
+	</StrictMode>
+);

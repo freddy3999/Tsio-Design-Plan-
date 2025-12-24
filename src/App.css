@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Yuji+Syuku&display=swap");
+@import "tailwindcss";
+
+* {
+	box-sizing: border-box;
+}
+
+@theme {
+	--color-primary: #303030;
+	--color-gray: #d9d9d9;
+	--color-secondary: #f2f2f2;
+}
+
+@utility sr-only {
+	/* icon替代文字 */
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+}
+
+@utility heading-bold {
+	font-family: "Shippori Mincho", serif;
+	font-weight: 600;
+	font-size: 22px;
+	letter-spacing: 0.3em;
+	color: #303030;
+}
+
+@utility subtitle-bold {
+	font-family: "Shippori Mincho", serif;
+	font-weight: 600;
+	font-size: 16px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility subtitle {
+	font-family: "Shippori Mincho", serif;
+	font-size: 16px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility footer {
+	font-family: "Shippori Mincho", serif;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility bodyText-bold {
+	font-family: "Shippori Mincho", serif;
+	font-weight: 600;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility bodyText {
+	font-family: "Shippori Mincho", serif;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility heading-bold-web {
+	font-family: "Shippori Mincho", serif;
+	font-weight: 300;
+	font-size: 30px;
+	letter-spacing: 0.3em;
+	color: #303030;
+}
+
+@utility heading-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 30px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility subtitle-bold-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 24px;
+	letter-spacing: 0.1em;
+	font-weight: 600;
+	color: #303030;
+}
+
+@utility subtitle-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 24px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility bodyText-large-bold-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 18px;
+	letter-spacing: 0.1em;
+	font-weight: 600;
+	color: #303030;
+}
+
+@utility bodyText-large-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 18px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility bodyText-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 16px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+/* ----------------------------------------------------- */
+/* 調整分頁點顏色 */
+/* ----------------------------------------------------- */
+
+/* 設置選中點的顏色 (活躍點) */
+.article-swiper-container .swiper-pagination-bullet-active {
+	background: #303030; /* 例如：鮮紅色或你的品牌主色 */
+}
+
+/* ----------------------------------------------------- */
+/* 調整分頁點位置 */
+/* ----------------------------------------------------- */
+
+/* 調整分頁點容器的位置 */
+.article-swiper-container .swiper-pagination {
+	/* 預設是 bottom: 0;，將其上移 
+       注意：你可能需要調整 ArticleCarousel 內的 padding 來騰出空間 */
+	bottom: -5px !important;
+
+	/* 如果你想讓點點更靠近卡片，而不是靠容器底部 */
+	/* top: 100%; */
+}
