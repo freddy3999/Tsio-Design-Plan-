@@ -8,6 +8,7 @@ import PlanPage from "./routers/PlanPage.jsx";
 import EnrollPage from "./routers/EnrollPage.jsx";
 import ContactPage from "./routers/ContactPage.jsx";
 import ArticlesPage from "./routers/ArticlesPage.jsx";
+import SingleArticlePage from "./routers/SingleArticlePage.jsx";
 
 // 引入你的主頁面元件
 import Main from "./index_component/Main.jsx";
@@ -46,14 +47,11 @@ const router = createBrowserRouter(
 				},
 				{
 					path: "Articles",
-					element: <ArticlesPage />,
+					children: [
+						{ index: true, element: <ArticlesPage /> },
+						{ path: ":articleId", element: <SingleArticlePage /> },
+					],
 				},
-				// 由於你的 PlanPage 是固定的總覽頁，我們將所有子路由與 PlanPage 分開定義，
-				// 但為了保持 URL 階層，我們必須把 PlanPage 獨立出來，並移除第一個重複的 Plan 路由。
-
-				// 移除第一個重複的 { path: "Plan", element: <PlanPage /> }
-				// 我們將所有子路由都放在一個新的 Plan 父路由中，
-				// 並將 PlanPage 設定為 Plan 的 index 路由
 				{
 					path: "Plan", // 總父路由，用於所有 Plan 相關的 URL
 					children: [

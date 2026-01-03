@@ -4,6 +4,7 @@ import { articleImages } from "../data/imagesObjects";
 import { exhibitionImages } from "../data/imagesObjects";
 import defaultCover from "../assets/imgs/default-cover.jpg";
 
+//工作坊封面圖
 function findImage(key) {
 	if (!key) return defaultCover;
 
@@ -23,7 +24,7 @@ function findImage(key) {
 function getCardLink(itemId) {
 	if (itemId.includes("-A00")) {
 		// 文章
-		return `/News/${itemId}`;
+		return `/Articles/${itemId}`;
 	} else if (itemId.includes("-W00")) {
 		// 工作坊
 		return `/Plan/Workshop/${itemId}`;
