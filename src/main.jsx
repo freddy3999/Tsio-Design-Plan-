@@ -9,6 +9,7 @@ import EnrollPage from "./routers/EnrollPage.jsx";
 import ContactPage from "./routers/ContactPage.jsx";
 import ArticlesPage from "./routers/ArticlesPage.jsx";
 import SingleArticlePage from "./routers/SingleArticlePage.jsx";
+import NotFoundPage from "./routers/NotFoundPage.jsx";
 
 // 引入你的主頁面元件
 import Main from "./index_component/Main.jsx";
@@ -92,6 +93,10 @@ const router = createBrowserRouter(
 							element: <SingleWorkshopPage />,
 						},
 					],
+				},
+				{
+					path: "*",
+					element: <NotFoundPage />,
 				},
 			],
 		},

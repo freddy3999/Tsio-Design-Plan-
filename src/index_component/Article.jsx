@@ -90,7 +90,7 @@ export default function Article() {
 	return (
 		<section className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-7xl space-y-[30px]">
 			<div className="">
-				<Title titleEN="article" title="報導" icon={icon} />
+				<Title titleEN="article" title="報導" link={"/Articles"} icon={icon} />
 			</div>
 
 			<div className="flex justify-center">
