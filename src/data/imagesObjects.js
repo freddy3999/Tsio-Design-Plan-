@@ -14,6 +14,12 @@ export const articleImages = {
 	"ALUM-A002-cover": article_1,
 	"ALUM-A003-cover": article_1,
 	"ALUM-A004-cover": article_1,
+	"ALUM-A005-cover": article_1,
+	"ALUM-A006-cover": article_1,
+	"ALUM-A007-cover": article_1,
+	"ALUM-A008-cover": article_1,
+	"ALUM-A009-cover": article_1,
+	"ALUM-A010-cover": article_1,
 };
 
 export const exhibitionImages = {

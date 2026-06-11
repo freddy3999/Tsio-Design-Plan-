@@ -78,9 +78,8 @@ export default function Nav() {
 						<NavLink
 							to="/"
 							onClick={handleNavLinkClick}
-							className={`transition-opacity duration-300 ${
-								menuOpen ? "opacity-0" : "opacity-100"
-							}`}
+							className={`transition-opacity duration-300 ${menuOpen ? "opacity-0" : "opacity-100"
+								}`}
 						>
 							<img
 								className="w-[150px] h-auto lg:w-[250px]"
@@ -93,31 +92,27 @@ export default function Nav() {
 							onClick={toggleMenu}
 							aria-label="導覽列開關"
 							// 按鈕的 z-index 保持在 z-60，或是不設定 (因為父層 nav 已經是 z-50 最高了)
-							className={`lg:hidden z-60 relative ${
-								menuOpen ? `text-white` : `text-primary`
-							}`}
+							className={`lg:hidden z-60 relative ${menuOpen ? `text-white` : `text-primary`
+								}`}
 						>
 							<div className="w-6 h-6 flex flex-col justify-center items-center">
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-300 ${
-										menuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
-									}`}
+									className={`w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
+										}`}
 								></span>
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-300 ${
-										menuOpen ? "opacity-0" : "opacity-100"
-									}`}
+									className={`w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? "opacity-0" : "opacity-100"
+										}`}
 								></span>
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-300 ${
-										menuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
-									}`}
+									className={`w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
+										}`}
 								></span>
 							</div>
 						</button>
 
 						{/* ... Desktop ul ... */}
-						<ul className="hidden lg:flex space-x-[60px] bodyText-large-bold-web opacity-90">
+						<ul className="hidden lg:flex space-x-[60px] bodyText-large-bold-web ">
 							<li>
 								<NavLink to="/About">About</NavLink>
 							</li>
@@ -141,11 +136,10 @@ export default function Nav() {
 			<div
 				className={`
                 fixed inset-0 z-40 lg:hidden transition-opacity duration-300
-                ${
-									menuOpen
-										? "opacity-100 pointer-events-auto"
-										: "opacity-0 pointer-events-none"
-								}
+                ${menuOpen
+						? "opacity-100 pointer-events-auto"
+						: "opacity-0 pointer-events-none"
+					}
             `}
 			>
 				<div
