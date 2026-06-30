@@ -93,7 +93,7 @@ export default function Article() {
 				<Title titleEN="article" title="報導" link={"/Articles"} icon={icon} />
 			</div>
 
-			<div className="flex justify-center">
+			<div className="headline flex justify-center">
 				<ArticleCarousel latestArticles={latestArticles} />
 			</div>
 		</section>

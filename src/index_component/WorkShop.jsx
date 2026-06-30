@@ -4,8 +4,6 @@ import Title from "../small_component/Title";
 import workShop_1 from "../assets/workShop_1.jpg";
 import workShop_2 from "../assets/workShop_2.jpg";
 import workShop_3 from "../assets/workShop_3.jpg";
-import ScrollReveal from "scrollreveal";
-import { useEffect } from "react";
 
 const icon = (
 	<>
@@ -23,20 +21,6 @@ const icon = (
 );
 
 export default function WorkShop() {
-	useEffect(() => {
-		ScrollReveal().reveal(".headline", {
-			duration: 1000,
-			distance: "20px",
-			origin: "bottom",
-			easing: "ease-in-out",
-		});
-
-		// ScrollReveal().reveal('.content-section', {
-		//     duration: 1500,
-		//     delay: 200,
-		//     origin: 'right'
-		// });
-	}, []);
 	return (
 		<section className="flex flex-col items-center space-y-[60px] lg:space-y-[135px]">
 			<Title

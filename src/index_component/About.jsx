@@ -10,7 +10,7 @@ export default function About() {
     </div> */}
     
 
-    <div className="mx-auto max-w-[300px] lg:max-w-none lg:w-fit">
+    <div className="headline mx-auto max-w-[300px] lg:max-w-none lg:w-fit">
         <NavLink to="/About" className="group flex flex-row gap-[30px] justify-center lg:gap-[280px]">
             <h2 className="subtitle-bold tracking-[0.4em] [writing-mode:vertical-lr] lg:subtitle-bold-web lg:tracking-[0.4em]">為地方設下儀式，為人群打開空間</h2>
             <div className="w-[276px] pt-[80px] space-y-[40px] lg:w-[550px] lg:pt-[170px]">
