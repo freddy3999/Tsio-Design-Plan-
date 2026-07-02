@@ -49,7 +49,7 @@ export default function CardLayout({ item }) {
 		>
 			<div className="w-full aspect-video overflow-hidden">
 				<img
-					className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+					className="w-full h-full object-cover transition duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:scale-105"
 					// 使用 item.image 作為 key
 					src={findImage(item.image)}
 					alt={item.title || "封面圖"}

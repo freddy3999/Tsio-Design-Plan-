@@ -15,12 +15,12 @@ const icon = (
 		<img
 			src={ArrowS}
 			alt=""
-			className="block lg:hidden transform transition-transform duration-300 ease-in-out group-hover:translate-x-5"
+			className="block lg:hidden transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-5"
 		/>
 		<img
 			src={ArrowL}
 			alt=""
-			className="hidden lg:block transform transition-transform duration-300 ease-in-out group-hover:translate-x-3"
+			className="hidden lg:block transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-3"
 		/>
 	</>
 );

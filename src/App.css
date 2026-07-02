@@ -127,6 +127,20 @@
 	color: #303030;
 }
 
+@utility concept-title {
+	font-family: "Shippori Mincho", serif;
+	font-size: 36px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+@utility concept-title-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 60px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
 /* ----------------------------------------------------- */
 /* 調整分頁點顏色 */
 /* ----------------------------------------------------- */

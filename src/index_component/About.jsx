@@ -4,11 +4,11 @@ import { NavLink } from "react-router";
 
 export default function About() {
     return (
-<section className="w-full h-full space-y-[80px] lg:space-y-[300px]">
-    {/* <div className="w-full aspect-[4/1] bg-gray-100">
-        <img src="" alt="" />
-    </div> */}
-    
+<section className="w-full h-full lg:mt-[120px]">
+    {/* 設醮 — 主題大字，上方間距覆蓋掉 Main 的 300px、下方與內文之間留小間距 */}
+    <h2 className="concept-title lg:concept-title-web headline text-center mb-[60px] lg:mb-[120px]">
+        設醮
+    </h2>
 
     <div className="headline mx-auto max-w-[300px] lg:max-w-none lg:w-fit">
         <NavLink to="/About" className="group flex flex-row gap-[30px] justify-center lg:gap-[280px]">
@@ -34,7 +34,7 @@ export default function About() {
                         <img
                             src={arrow_small}
                             alt="arrow"
-                            className="transform transition-transform duration-300 ease-in-out group-hover:translate-x-3"
+                            className="transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-3"
                         />
                     </picture>
                 </span>

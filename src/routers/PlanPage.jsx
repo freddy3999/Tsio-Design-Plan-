@@ -6,18 +6,10 @@ import Bg_gray from "../assets/bg_gray.jpg";
 import ExhibitionCard from "../small_component/ExhibitionCard";
 
 import Exhibition_1 from "../assets/imgs/Exhibition_1.jpg";
-import ScrollReveal from "scrollreveal";
-import { useEffect } from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 export default function PlanPage() {
-	useEffect(() => {
-		ScrollReveal().reveal(".headline", {
-			duration: 1000,
-			distance: "20px",
-			origin: "bottom",
-			easing: "ease-in-out",
-		});
-	}, []);
+	useScrollReveal();
 
 	return (
 		<section className="space-y-[10vh]">

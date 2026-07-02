@@ -3,16 +3,18 @@ import banner1_A from "../assets/banner1_A.JPG";
 import banner1_B from "../assets/banner1_B.JPG";
 import banner2_A from "../assets/banner2_A.jpg";
 import banner2_B from "../assets/banner2_B.png";
+import { banner as bannerMotion } from "../config/motion";
 
 // 左欄圖片陣列 — 未來擴充只需在此新增圖片
 const leftImages = [banner1_A, banner2_A];
 // 右欄圖片陣列 — 未來擴充只需在此新增圖片
 const rightImages = [banner1_B, banner2_B];
 
-const INTERVAL = 5000; // 每張停留時間 (ms)
-const STAGGER = 0; // 右欄比左欄晚啟動的毫秒數
-const DURATION = 1400; // 擦入動畫時長 (ms)
-const EASE = "cubic-bezier(0.77, 0, 0.175, 1)"; // 近似 GSAP power3.inOut
+// 動畫參數統一來自 config/motion.js
+const INTERVAL = bannerMotion.interval; // 每張停留時間 (ms)
+const STAGGER = bannerMotion.stagger; // 右欄比左欄晚啟動的毫秒數
+const DURATION = bannerMotion.duration; // 擦入動畫時長 (ms)
+const EASE = bannerMotion.ease; // 擦入緩動
 
 /*
   核心機制（取自附檔 kiiro 輪播）：
@@ -90,7 +92,10 @@ export default function Banner() {
 function CarouselColumn({ side, images, active, before }) {
 	const hiddenClip =
 		side === "left" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)";
-	const offsetY = side === "left" ? "-18%" : "18%";
+	const offsetY =
+		side === "left"
+			? `-${bannerMotion.parallaxOffset}`
+			: bannerMotion.parallaxOffset;
 
 	return (
 		<div className="relative h-1/2 w-full overflow-hidden lg:h-full basis-1/2">
@@ -118,7 +123,7 @@ function CarouselColumn({ side, images, active, before }) {
 					backgroundRepeat: "no-repeat",
 					transform: revealed
 						? "translateY(0) scale(1)"
-						: `translateY(${offsetY}) scale(1.06)`,
+						: `translateY(${offsetY}) scale(${bannerMotion.initialScale})`,
 					transition: isActive ? `transform ${DURATION}ms ${EASE}` : "none",
 					willChange: "transform",
 				};

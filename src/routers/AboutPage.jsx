@@ -5,20 +5,13 @@ import Title from "../small_component/Title";
 import AboutPage_1 from "../assets/AboutPage_1.jpg";
 import AboutPage_2 from "../assets/AboutPage_2.jpg";
 import AboutPage_3 from "../assets/AboutPage_3.jpg";
-import ScrollReveal from 'scrollreveal';
 import { useEffect, useState } from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
+import { interval } from "../config/motion";
 
 export default function AboutPage() {
 
-      useEffect(() => {
-        ScrollReveal().reveal('.headline', {
-            duration: 1000,
-            distance: '20px',
-            origin: 'bottom',
-            easing: 'ease-in-out',
-        });
-
-    }, []);
+      useScrollReveal();
 
   return (
     <section className="space-y-[20vh]">
@@ -112,7 +105,7 @@ const ImageGallery = () => {
     if (isMobile) {
       intervalId = setInterval(() => {
         setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
-      }, 6000);
+      }, interval.crossfade);
 
       return () => {
         clearInterval(intervalId);
@@ -128,7 +121,7 @@ const ImageGallery = () => {
             key={index}
             src={img}
             alt=""
-            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[var(--motion-slow)] ease-[var(--motion-ease-standard)] ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
           />
         ))}
       </div>

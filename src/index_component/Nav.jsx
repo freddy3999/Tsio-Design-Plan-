@@ -67,7 +67,7 @@ export default function Nav() {
 				className={`
                     fixed top-0 left-0 right-0 py-[4.5vh]
                     
-                    transition-transform duration-300 ease-in-out
+                    transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)]
                     ${visible ? "translate-y-0" : "-translate-y-full"}
                     z-50
                 `}
@@ -78,7 +78,7 @@ export default function Nav() {
 						<NavLink
 							to="/"
 							onClick={handleNavLinkClick}
-							className={`transition-opacity duration-300 ${menuOpen ? "opacity-0" : "opacity-100"
+							className={`transition-opacity duration-[var(--motion-base)] ${menuOpen ? "opacity-0" : "opacity-100"
 								}`}
 						>
 							<img
@@ -97,15 +97,15 @@ export default function Nav() {
 						>
 							<div className="w-6 h-6 flex flex-col justify-center items-center">
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
+									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${menuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
 										}`}
 								></span>
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? "opacity-0" : "opacity-100"
+									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${menuOpen ? "opacity-0" : "opacity-100"
 										}`}
 								></span>
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
+									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${menuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
 										}`}
 								></span>
 							</div>
@@ -135,7 +135,7 @@ export default function Nav() {
 
 			<div
 				className={`
-                fixed inset-0 z-40 lg:hidden transition-opacity duration-300
+                fixed inset-0 z-40 lg:hidden transition-opacity duration-[var(--motion-base)]
                 ${menuOpen
 						? "opacity-100 pointer-events-auto"
 						: "opacity-0 pointer-events-none"
@@ -151,7 +151,7 @@ export default function Nav() {
 					className={`
                     absolute top-0 right-0 h-screen w-80 max-w-[85vw] 
                     bg-primary shadow-xl 
-                    transform transition-transform duration-300 ease-in-out
+                    transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)]
                     ${menuOpen ? "translate-x-0" : "translate-x-full"}
                 `}
 				>

@@ -10,6 +10,7 @@ import ExhibitionLayout from "../../assets/imgs/ExhibitionLayout.jpg"
 import leactureImg_1 from "../../assets/imgs/leactureImg_1.jpg"
 import leactureImg_2 from "../../assets/imgs/leactureImg_2.jpg"
 import leactureImg_3 from "../../assets/imgs/leactureImg_3.jpg"
+import { interval } from "../../config/motion";
 
 export default function LecturePage() {
   return (
@@ -139,7 +140,7 @@ const ImageGallery = () => {
     if (isMobile) {
       intervalId = setInterval(() => {
         setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
-      }, 6000);
+      }, interval.crossfade);
 
       return () => {
         clearInterval(intervalId);
@@ -155,7 +156,7 @@ const ImageGallery = () => {
             key={index}
             src={img}
             alt=""
-            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[var(--motion-slow)] ease-[var(--motion-ease-standard)] ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
           />
         ))}
       </div>

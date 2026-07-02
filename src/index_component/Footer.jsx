@@ -26,7 +26,7 @@ export default function Footer() {
                     text-gray-400 group-hover:text-gray-500 
                     font-serif text-base tracking-[2px] uppercase 
                     [writing-mode:vertical-rl] [transform:rotate(180deg)]
-                    transition-colors duration-200
+                    transition-colors duration-[var(--motion-fast)]
                     "
                     aria-label="回到頁面頂部"
                 >
