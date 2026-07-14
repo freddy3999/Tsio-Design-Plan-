@@ -33,7 +33,7 @@ export default function MarketPage() {
             title="01. 手寫與印刷"
             layout="horizontal"
           />
-          <div className="w-full mx-auto px-[40px] mt-[60px] lg:mt-[100px] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center">
+          <div className="w-full mx-auto px-[40px] mt-[var(--title-gap)] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center">
             <div className="w-full md:w-[450px] lg:w-[600px] aspect-square">
               <img className="w-full h-full object-cover" src={ExhibitionLayout} alt="" />
             </div>
@@ -49,7 +49,7 @@ export default function MarketPage() {
             title="01. 手寫與印刷"
             layout="horizontal"
           />
-          <div className="w-full mx-auto px-[40px] mt-[60px] lg:mt-[100px] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center">
+          <div className="w-full mx-auto px-[40px] mt-[var(--title-gap)] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center">
             <div className="w-full md:w-[450px] lg:w-[600px] aspect-square">
               <img className="w-full h-full object-cover" src={ExhibitionLayout} alt="" />
             </div>
@@ -65,7 +65,7 @@ export default function MarketPage() {
             title="01. 手寫與印刷"
             layout="horizontal"
           />
-          <div className="w-full mx-auto px-[40px] mt-[60px] lg:mt-[100px] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center">
+          <div className="w-full mx-auto px-[40px] mt-[var(--title-gap)] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center">
             <div className="w-full md:w-[450px] lg:w-[600px] aspect-square">
               <img className="w-full h-full object-cover" src={ExhibitionLayout} alt="" />
             </div>
@@ -75,7 +75,7 @@ export default function MarketPage() {
           </div>
         </div>
 
-        <div className="max-w-[82.2vw] mx-auto space-y-[30px]">
+        <div className="max-w-[82.2vw] mx-auto">
           <hr className="border-t border-primary my-8 mb-[70px]" />
           <div>
             <Title
@@ -84,10 +84,10 @@ export default function MarketPage() {
               layout="horizontal"
             />
           </div>
-          <p className="bodyText lg:bodyText-web text-center">
+          <p className="bodyText lg:bodyText-web text-center mt-[var(--title-gap-text)]">
             想成為這場市集的一部分嗎？無論你是手作創作者、插畫家、獨立出版人，還是有獨特故事想分享的品牌，我們都期待你加入。
           </p>
-          <button className="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block">
+          <button className="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block mt-[30px]">
             立即報名 Register Now
           </button>
         </div>

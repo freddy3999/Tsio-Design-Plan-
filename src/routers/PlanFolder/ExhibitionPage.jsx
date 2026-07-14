@@ -57,7 +57,7 @@ export default function ExhibitionPage() {
 						title="主題概念｜Exhibition Concept"
 						layout="horizontal"
 					/>
-					<div className="headline mx-auto w-[82.2vw] mt-[7vh] lg:mt-[12vh] lg:w-[900px]">
+					<div className="headline mx-auto w-[82.2vw] mt-[var(--title-gap-text)] lg:w-[900px]">
 						<p className="headline bodyText lg:bodyText-web">
 							他們曾從這裡出發，往夢想的方向走去，在遠方緩慢地雕刻自己、修補現實。有些話，在那時沒說出口；有些故事，在燃燒之後才懂得被訴說。《遠方還未說的話》象徵著尚未被傳遞的經驗，以及時間彼端的提醒與期盼。它可能是學長姊們從未明說的經歷、一路走來的困惑與轉折，也可能是對後來者的一封無聲情書。這是一種關於距離與時間的隱喻，也是一次關於傳承、回望與對話的邀請。我們希望透過本次展覽，讓那些從這條路上走過的人，將未曾說出口的話，轉化為作品、聲音、影像或空間裝置，靜靜擺放在後來者的眼前——不喧嘩，卻閃著光。
 						</p>
@@ -70,7 +70,7 @@ export default function ExhibitionPage() {
 						title="創作與參展人員｜Artists & Contributors"
 						layout="horizontal"
 					/>
-					<div className="headline mx-auto w-[82.2vw] mt-[7vh] lg:mt-[12vh] lg:w-[900px]">
+					<div className="headline mx-auto w-[82.2vw] mt-[var(--title-gap-text)] lg:w-[900px]">
 						<p className="headline bodyText lg:bodyText-web">
 							本次展覽由歷屆校友、地方創作者、設計背景青年共同參與，
 							透過作品傳遞他們在不同城市、不同人生階段的片刻與回望。
@@ -111,7 +111,7 @@ export default function ExhibitionPage() {
 						title="展區結構｜Exhibition Layout"
 						layout="horizontal"
 					/>
-					<div className="space-y-[35px] w-full mx-auto px-[40px] mt-[7vh] lg:mt-[12vh] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center md:gap-[100px]">
+					<div className="space-y-[35px] w-full mx-auto px-[40px] mt-[var(--title-gap)] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center md:gap-[100px]">
 						<div className="w-full md:w-[450px] lg:w-[600px] aspect-square">
 							<img
 								className="w-full h-full object-cover"

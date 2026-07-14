@@ -1,4 +1,5 @@
 import Title from "../small_component/Title";
+import MoreLink from "../small_component/MoreLink";
 import CardLayout from "../small_component/CardLayout";
 import articleData from "../data/article.json";
 import { useEffect, useState } from "react";
@@ -6,24 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
-import ArrowS from "../assets/Vector_small.png";
-import ArrowL from "../assets/Vector_big.png";
-
-const icon = (
-	<>
-		<img
-			src={ArrowS}
-			alt=""
-			className="block lg:hidden transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-5"
-		/>
-		<img
-			src={ArrowL}
-			alt=""
-			className="hidden lg:block transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-3"
-		/>
-	</>
-);
 
 function getLatestArticles(count = 3) {
 	const dataCopy = [...articleData];
@@ -88,14 +71,19 @@ export default function Article() {
 	const latestArticles = getLatestArticles(3);
 
 	return (
-		<section className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-7xl space-y-[30px]">
+		<section className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-7xl">
 			<div className="">
-				<Title titleEN="article" title="報導" link={"/Articles"} icon={icon} />
+				<Title titleEN="article" title="報導" />
 			</div>
 
-			<div className="headline flex justify-center">
+			<div className="headline flex justify-center mt-[var(--title-gap)]">
 				<ArticleCarousel latestArticles={latestArticles} />
 			</div>
+			<MoreLink
+				to="/Articles"
+				label="查看報導"
+				className="headline mt-[60px] lg:mt-[100px]"
+			/>
 		</section>
 	);
 }

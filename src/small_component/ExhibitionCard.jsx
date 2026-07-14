@@ -3,7 +3,9 @@ import useScrollReveal from "../hooks/useScrollReveal";
 
 export default function ExhibitionCard({
     imageSrc,
+    eyebrow,
     title,
+    subtitle,
     description,
     link,
     imageOnRight = false,
@@ -17,11 +19,11 @@ export default function ExhibitionCard({
         <Link to={link} className="group headline flex flex-col max-w-[82.2vw] mx-auto space-y-[30px] lg:space-y-0 lg:flex-row lg:justify-center lg:items-center lg:gap-[100px] p-4">
             {/* Text Section */}
             <div className={`flex flex-col space-y-[10px] ${textOrder}`}>
-                <p className="text-primary">Main Exhibition</p>
+                <p className="text-primary">{eyebrow}</p>
                 <div className="flex items-center space-x-2 text-primary">
                     <h2 className='heading-bold lg:heading-bold-web'>{title}</h2>
                     <span>|</span>
-                    <h2 className='heading-bold lg:heading-bold-web'>主題策展</h2>
+                    <h2 className='heading-bold lg:heading-bold-web'>{subtitle}</h2>
                     <svg
                         className="w-5 h-5 text-primary transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-3"
                         fill="none"

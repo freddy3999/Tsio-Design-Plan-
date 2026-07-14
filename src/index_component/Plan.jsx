@@ -1,29 +1,13 @@
-import ArrowS from "../assets/Vector_small.png";
-import ArrowL from "../assets/Vector_big.png";
 import plan_1 from "../assets/plan_1.jpg";
 import plan_2 from "../assets/plan_2.jpg";
 import Title from "../small_component/Title";
-
-const icon = (
-    <>
-        <img
-            src={ArrowS}
-            alt=""
-            className="block lg:hidden transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-5"
-        />
-        <img
-            src={ArrowL}
-            alt=""
-            className="hidden lg:block transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-3"
-        />
-    </>
-);
+import MoreLink from "../small_component/MoreLink";
 
 export default function Plan() {
     return (
         <section>
-            <Title titleEN="plan" title="計畫" icon={icon} link="/Plan"/>
-            <div className="space-y-[60px] lg:flex lg:flex-row lg:items-end lg:space-y-0 mt-[60px] lg:mt-[135px]">
+            <Title titleEN="plan" title="計畫" />
+            <div className="space-y-[60px] lg:flex lg:flex-row lg:items-end lg:space-y-0 mt-[var(--title-gap)]">
                 <div className="w-full lg:w-[36.5%] space-y-[60px] mt-[60px] lg:mt-0 lg:h-[100vh] lg:flex lg:flex-col lg:justify-between">
                     <div className="w-[40%] lg:w-full aspect-[28/19]">
                         <img className="headline w-full h-full object-cover" src={plan_1} alt="" />
@@ -45,6 +29,7 @@ export default function Plan() {
                     <img className="headline w-full h-full object-cover" src={plan_2} alt="" />
                 </div>
             </div>
+            <MoreLink to="/Plan" label="查看計畫" className="headline mt-[60px] lg:mt-[100px]" />
         </section>
     );
 }

@@ -1,6 +1,5 @@
 import Nav from "../index_component/Nav";
 import Footer from "../index_component/Footer";
-import Breadcrumbs from "../small_component/Breadcrumbs";
 import IgIcon from "../assets/icons/ig_black.png";
 import ThreadIcon from "../assets/icons/thread_black.png";
 
@@ -8,16 +7,6 @@ export default function ContactPage() {
 	return (
 		<section className="space-y-[20vh]">
 			<main className="w-full mx-auto px-[40px] space-y-[5vh] mt-[15vh] xl:px-0 lg:max-w-7xl lg:mt-[24vh] lg:space-y-[20vh]">
-				<div className="">
-					<Breadcrumbs word="Contact" />
-					{/* <div className="">
-						<p className="text-left bodyText lg:bodyText-web">
-							有任何合作提案、報名問題、或只是想和我們說聲嗨，
-							歡迎透過以下表單與我們聯繫，我們會盡快回覆你。
-						</p>
-					</div> */}
-				</div>
-
 				<div className=" space-y-[5vh] bodyText lg:bodyText-web lg:space-y-0 lg:flex lg:justify-between">
 					<address>
 						<dl className="not-italic space-y-[20px] lg:space-y-[35px]">

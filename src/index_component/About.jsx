@@ -1,6 +1,4 @@
-import arrow_big from '../assets/Vector_big.png';
-import arrow_small from '../assets/Vector_small.png';
-import { NavLink } from "react-router";
+import MoreLink from "../small_component/MoreLink";
 
 export default function About() {
     return (
@@ -11,9 +9,9 @@ export default function About() {
     </h2>
 
     <div className="headline mx-auto max-w-[300px] lg:max-w-none lg:w-fit">
-        <NavLink to="/About" className="group flex flex-row gap-[30px] justify-center lg:gap-[280px]">
+        <div className="flex flex-row items-end gap-[30px] justify-center lg:gap-[280px]">
             <h2 className="subtitle-bold tracking-[0.4em] [writing-mode:vertical-lr] lg:subtitle-bold-web lg:tracking-[0.4em]">為地方設下儀式，為人群打開空間</h2>
-            <div className="w-[276px] pt-[80px] space-y-[40px] lg:w-[550px] lg:pt-[170px]">
+            <div className="w-[276px] pt-[80px] lg:w-[550px] lg:pt-[170px]">
                 <p className='bodyText lg:bodyText-large-web'>
                 核心精神｜
                 <br /><br />
@@ -28,18 +26,9 @@ export default function About() {
                 的可能，也嘗試在其中創造一種新的共同體感。
                 這場展覽不是終點，而是一場設醮的開始。
                 </p>
-                <span>
-                    <picture className='flex justify-end'>
-                        <source media="(min-width: 768px)" srcset={arrow_big} />
-                        <img
-                            src={arrow_small}
-                            alt="arrow"
-                            className="transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] group-hover:translate-x-3"
-                        />
-                    </picture>
-                </span>
+                <MoreLink to="/About" label="了解更多" align="end" className="mt-[40px]" />
             </div>
-        </NavLink>
+        </div>
     </div>
 </section>
     )

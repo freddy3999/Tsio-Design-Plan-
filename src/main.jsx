@@ -2,6 +2,7 @@ import "./App.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { applyMotionVars } from "./config/motion.js";
+import { applySpacingVars } from "./config/spacing.js";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App.jsx";
 import AboutPage from "./routers/AboutPage.jsx";
@@ -107,8 +108,9 @@ const router = createBrowserRouter(
 	}
 );
 
-// 啟動時把 motion token 注入成 CSS 變數，讓 Tailwind class 的 var() 生效
+// 啟動時把 motion / spacing token 注入成 CSS 變數，讓 Tailwind class 的 var() 生效
 applyMotionVars();
+applySpacingVars();
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>

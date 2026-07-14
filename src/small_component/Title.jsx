@@ -24,7 +24,8 @@ export default function Title({
 
 	const titleENElement = <p className={titleENClass}>{titleEN}</p>;
 	const titleElement = <p className={titleClass}>{title}</p>;
-	const iconElement = <div className="group">{icon}</div>;
+	// 沒傳 icon 時不渲染，避免留下空 div 造成多餘間距（純標籤模式）
+	const iconElement = icon ? <div className="group">{icon}</div> : null;
 
 	// 根據 layout 屬性決定 content 的排列順序
 	const content = (

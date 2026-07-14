@@ -38,7 +38,7 @@ export default function OtherActivitiesPage() {
             title="講者介紹｜GUEST SPEAKERS"
             layout="horizontal"
           />
-          <div className="headline w-full mx-auto px-[40px] mt-[60px] space-y-[100px] lg:mt-[100px] lg:space-y-[100px] lg:max-w-7xl">
+          <div className="headline w-full mx-auto px-[40px] mt-[var(--title-gap)] space-y-[100px] lg:space-y-[100px] lg:max-w-7xl">
             <ProfileCard
               size={"350px"}
               src={movieCover_1}
@@ -94,7 +94,7 @@ export default function OtherActivitiesPage() {
           </div>
         </div>
 
-        <div className="max-w-[82.2vw] mx-auto space-y-[30px]">
+        <div className="max-w-[82.2vw] mx-auto">
           <hr className="border-t border-primary my-8 mb-[70px]" />
           <div>
             <Title
@@ -103,7 +103,7 @@ export default function OtherActivitiesPage() {
               layout="horizontal"
             />
           </div>
-          <p className="bodyText lg:bodyText-web text-center">
+          <p className="bodyText lg:bodyText-web text-center mt-[var(--title-gap-text)]">
             活動當日請自備坐墊或野餐墊。如遇雨天，活動將改至室內或延期，將於社群公告。現場可攜帶輕食與飲料，並請自行帶走垃圾。
           </p>
         </div>

@@ -37,7 +37,7 @@ export const reveal = {
 	easing: easing.spring,
 	// 觸發時機：元素露出多少比例才開始動畫（0=露出1px就觸發，1=完全進入才觸發）
 	// 覺得太早 → 調大；覺得太晚 → 調小
-	viewFactor: 0.3,
+	viewFactor: 0.7,
 	// reset: false, // 需要每次捲回都重播時可打開
 };
 

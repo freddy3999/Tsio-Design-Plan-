@@ -29,7 +29,7 @@ export default function LecturePage() {
                 title="講座活動｜TALKS & SHARING"
                 layout="horizontal"
               />
-              <div className="headline mx-auto w-[82.2vw] mt-[60px] lg:mt-[100px] lg:w-[900px]">
+              <div className="headline mx-auto w-[82.2vw] mt-[var(--title-gap-text)] lg:w-[900px]">
                 <p className="headline bodyText lg:bodyText-web">
                   我們經常在展覽裡談創作，談設計，談作品的樣貌。但我們更在意的是，這些作品背後那段無聲的過程——那些不被記錄的掙扎、遲疑、離開、或轉彎。《遠方還未說的話》是一場關於時間的展覽，也是一種溫柔的回望。它來自那些曾經走過這條路的人，帶著他們在現實與夢想之間行走的傷痕與光。用作品替代語言，告訴還在路上的我們一件事：你不是孤單的。在這裡，我們邀請你聽見那些未說出口的話。或許來自未來的你，也會留下幾句話，給還沒出發的人。「展覽不只是結果，它是一段曾經沒機會說出來的旅程。」— Lorem Chang, 策展人
                 </p>
@@ -42,7 +42,7 @@ export default function LecturePage() {
                 title="講者介紹｜GUEST SPEAKERS"
                 layout="horizontal"
               />
-              <div className="headline w-full mx-auto px-[40px] mt-[60px] space-y-[100px] lg:mt-[100px] lg:space-y-[100px] lg:max-w-7xl">
+              <div className="headline w-full mx-auto px-[40px] mt-[var(--title-gap)] space-y-[100px] lg:space-y-[100px] lg:max-w-7xl">
                   <ProfileCard size={"250px"} src={leactureSpeaker_1} name="林哲翔" job="產品設計師／自由創作者" content={"Talk 01｜設計是一條彎彎的路，還是可以折返的橋？畢業後進入科技業，曾任職於新創公司與大型 UX 團隊，後選擇離開制度、走向自由接案。他將分享關於「選擇」的故事——在創意與穩定、在理想與現實之間的每一次掙扎。設計不是直線，也不是答案，而是一種反覆折返與自問的方式。「我花了很多年，才學會不要為了成功而設計。」"} />
                   <ProfileCard size={"250px"} src={leactureSpeaker_1} name="林哲翔" job="產品設計師／自由創作者" content={"Talk 01｜設計是一條彎彎的路，還是可以折返的橋？畢業後進入科技業，曾任職於新創公司與大型 UX 團隊，後選擇離開制度、走向自由接案。他將分享關於「選擇」的故事——在創意與穩定、在理想與現實之間的每一次掙扎。設計不是直線，也不是答案，而是一種反覆折返與自問的方式。「我花了很多年，才學會不要為了成功而設計。」"} />
                   <ProfileCard size={"250px"} src={leactureSpeaker_1} name="林哲翔" job="產品設計師／自由創作者" content={"Talk 01｜設計是一條彎彎的路，還是可以折返的橋？畢業後進入科技業，曾任職於新創公司與大型 UX 團隊，後選擇離開制度、走向自由接案。他將分享關於「選擇」的故事——在創意與穩定、在理想與現實之間的每一次掙扎。設計不是直線，也不是答案，而是一種反覆折返與自問的方式。「我花了很多年，才學會不要為了成功而設計。」"} />
@@ -55,7 +55,7 @@ export default function LecturePage() {
                 title="講座資訊｜SCHEDULE"
                 layout="horizontal"
               />
-              <div className="space-y-[35px] w-full mx-auto px-[40px] mt-[60px] lg:mt-[100px] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center md:gap-[100px]">
+              <div className="space-y-[35px] w-full mx-auto px-[40px] mt-[var(--title-gap)] lg:max-w-7xl md:flex md:flex-row md:items-center md:justify-center md:gap-[100px]">
                 <div className="w-full md:w-[450px] lg:w-[600px] aspect-square">
                   <img className="w-full h-full object-cover" src={ExhibitionLayout} alt="" />
                 </div>
@@ -92,7 +92,7 @@ export default function LecturePage() {
               </div>
             </div>
 
-            <div className="w-full mx-auto px-[40px] space-y-[30px] lg:max-w-7xl">
+            <div className="w-full mx-auto px-[40px] lg:max-w-7xl">
               <hr className="border-t border-primary my-8 mb-[70px]" />
               <div className="">
                 <Title
@@ -101,8 +101,8 @@ export default function LecturePage() {
                   layout="horizontal"
                 />
               </div>
-              <p className="bodyText lg:bodyText-web text-center">講座免費參加，部分座位可預約，名額有限。點擊報名連結或現場候補入場。</p>
-              <button class="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block">
+              <p className="bodyText lg:bodyText-web text-center mt-[var(--title-gap-text)]">講座免費參加，部分座位可預約，名額有限。點擊報名連結或現場候補入場。</p>
+              <button class="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block mt-[30px]">
                 立即報名 Register Now
               </button>
             </div>
