@@ -41,6 +41,14 @@ export const reveal = {
 	// reset: false, // 需要每次捲回都重播時可打開
 };
 
+// ---- 首頁散排圖庫捲動視差（JS 專用，ImageGallery）----
+// 每張圖以不同速度跟隨捲動，產生前後景深的漂浮感
+export const galleryParallax = {
+	maxShift: 130, // 平板以上（≥768 散排版型）：速度係數 ±1 時的最大位移 (px)
+	maxShiftMobile: 45, // 手機：堆疊排版位移要小，避免圖片互撞
+	lerp: 0.08, // 追隨平滑度（越小越黏滯有慣性、越大越即時）
+};
+
 // ---- 首頁 Banner 視差擦入（JS 專用）----
 export const banner = {
 	interval: interval.banner,
