@@ -2,6 +2,15 @@ import { useState, useEffect, useRef } from "react";
 import logo from "../assets/icons/logo.svg";
 import { NavLink } from "react-router";
 
+// 桌機導覽項目（手機側邊選單另有一份，標籤不同：Articles 顯示為 News）
+const NAV_ITEMS = [
+	{ to: "/About", label: "About" },
+	{ to: "/Plan", label: "Project" },
+	{ to: "/Enroll", label: "Enroll" },
+	{ to: "/Contact", label: "Contact" },
+	{ to: "/Articles", label: "Article" },
+];
+
 export default function Nav() {
 	const [visible, setVisible] = useState(true);
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -113,21 +122,13 @@ export default function Nav() {
 
 						{/* ... Desktop ul ... */}
 						<ul className="hidden lg:flex space-x-[60px] bodyText-large-bold-web ">
-							<li>
-								<NavLink to="/About">About</NavLink>
-							</li>
-							<li>
-								<NavLink to="/Plan">Project</NavLink>
-							</li>
-							<li>
-								<NavLink to="/Enroll">Enroll</NavLink>
-							</li>
-							<li>
-								<NavLink to="/Contact">Contact</NavLink>
-							</li>
-							<li>
-								<NavLink to="/Articles">Article</NavLink>
-							</li>
+							{NAV_ITEMS.map(({ to, label }) => (
+								<li key={to}>
+									<NavLink to={to} className="nav-underline">
+										{label}
+									</NavLink>
+								</li>
+							))}
 						</ul>
 					</div>
 				</div>
