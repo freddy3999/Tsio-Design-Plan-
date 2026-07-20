@@ -2,7 +2,7 @@ import Title from "../small_component/Title";
 import MoreLink from "../small_component/MoreLink";
 import workShop_1 from "../assets/workShop_1.jpg";
 import workShop_2 from "../assets/workShop_2.jpg";
-import workShop_3 from "../assets/workShop_3.jpg";
+import workShop_3 from "../assets/workShop_3.jpeg";
 
 export default function WorkShop() {
 	return (
@@ -39,9 +39,9 @@ export default function WorkShop() {
 			<div className="my-auto bodyText-bold [writing-mode:vertical-lr] lg:bodyText-large-bold-web headline mt-[60px] lg:mt-[135px]">
 				<p className="tracking-[0.4em]">﹁一起動手，設下自己的微型儀式。﹂</p>
 			</div>
-			<div className="relative w-[83%] aspect-[11/3] mt-[60px] lg:mt-[135px]">
+			<div className="relative w-[83%] aspect-[11/3.5] mt-[60px] lg:mt-[135px]">
 				<img
-					className="absolute w-full h-full object-cover object-bottom headline"
+					className="absolute w-full h-full object-cover object-top headline"
 					src={workShop_3}
 					alt=""
 				/>
