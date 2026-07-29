@@ -1,14 +1,51 @@
 import { useState, useEffect, useCallback } from "react";
-import banner1_A from "../assets/banner1_A.JPG";
-import banner1_B from "../assets/banner1_B.JPG";
-import banner2_A from "../assets/banner2_A.jpg";
-import banner2_B from "../assets/banner2_B.png";
+import banner1_A from "../assets/banner/desktop/banner1_A.webp";
+import banner1_B from "../assets/banner/desktop/banner1_B.webp";
+import banner2_A from "../assets/banner/desktop/banner2_A.webp";
+import banner2_B from "../assets/banner/desktop/banner2_B.webp";
+import banner3_A from "../assets/banner/desktop/banner3_A.webp";
+import banner3_B from "../assets/banner/desktop/banner3_B.webp";
+import banner4_A from "../assets/banner/desktop/banner4_A.webp";
+import banner4_B from "../assets/banner/desktop/banner4_B.webp";
 import { banner as bannerMotion } from "../config/motion";
 
 // 左欄圖片陣列 — 未來擴充只需在此新增圖片
-const leftImages = [banner1_A, banner2_A];
+const leftImages = [banner1_A, banner2_A, banner3_A, banner4_A];
 // 右欄圖片陣列 — 未來擴充只需在此新增圖片
-const rightImages = [banner1_B, banner2_B];
+const rightImages = [banner1_B, banner2_B, banner3_B, banner4_B];
+
+/*
+  手機 / 平板單欄用的整張原圖：
+  - 手機（< 768px）→ assets/banner/mobile
+  - 平板（768 〜 1023px）→ assets/banner/tablet
+  丟進對應資料夾即自動套用，檔名裡的數字決定輪播順序，增減圖片都不用改程式。
+  （只掃圖檔副檔名，資料夾裡的說明檔不會被誤抓）
+*/
+const mobileModules = import.meta.glob(
+	"../assets/banner/mobile/*.{png,jpg,jpeg,webp,avif,PNG,JPG,JPEG}",
+	{ eager: true, import: "default" },
+);
+const tabletModules = import.meta.glob(
+	"../assets/banner/tablet/*.{png,jpg,jpeg,webp,avif,PNG,JPG,JPEG}",
+	{ eager: true, import: "default" },
+);
+
+// 依檔名中的數字排序，輸出圖片網址陣列
+function sortByNumber(modules) {
+	return Object.entries(modules)
+		.sort(([a], [b]) => {
+			const num = (p) => Number(p.split("/").pop().match(/(\d+)/)?.[1] ?? 0);
+			return num(a) - num(b);
+		})
+		.map(([, src]) => src);
+}
+
+const mobileImages = sortByNumber(mobileModules);
+// 平板還沒放圖時退回用手機圖，畫面不會開天窗
+const tabletImages = (() => {
+	const imgs = sortByNumber(tabletModules);
+	return imgs.length > 0 ? imgs : mobileImages;
+})();
 
 // 動畫參數統一來自 config/motion.js
 const INTERVAL = bannerMotion.interval; // 每張停留時間 (ms)
@@ -31,7 +68,7 @@ function useCarouselColumn(length) {
 	// 切下一張：把目前 active 標記為 before，並把 active 推進到下一張
 	const advance = useCallback(() => {
 		setState(({ active }) => ({
-			active: (active + 1) % length,
+			active: (active + 1) % (length || 1),
 			before: active,
 		}));
 	}, [length]);
@@ -60,36 +97,76 @@ export default function Banner() {
 		before: rightBefore,
 		advance: advanceRight,
 	} = useCarouselColumn(rightImages.length);
+	// 手機、平板各自的張數可能與切半圖不同，獨立計數避免索引對不上
+	const {
+		active: mobileActive,
+		before: mobileBefore,
+		advance: advanceMobile,
+	} = useCarouselColumn(mobileImages.length);
+	const {
+		active: tabletActive,
+		before: tabletBefore,
+		advance: advanceTablet,
+	} = useCarouselColumn(tabletImages.length);
 
 	// 左欄先切換，右欄延遲 STAGGER 毫秒，形成錯落感
 	useEffect(() => {
 		const timer = setInterval(() => {
 			advanceLeft();
+			advanceMobile();
+			advanceTablet();
 			setTimeout(advanceRight, STAGGER);
 		}, INTERVAL);
 		return () => clearInterval(timer);
-	}, [advanceLeft, advanceRight]);
+	}, [advanceLeft, advanceRight, advanceMobile, advanceTablet]);
 
 	return (
-		<section className="h-screen w-full lg:flex flex-row">
-			<CarouselColumn
-				side="left"
-				images={leftImages}
-				active={leftActive}
-				before={leftBefore}
-			/>
-			<CarouselColumn
-				side="right"
-				images={rightImages}
-				active={rightActive}
-				before={rightBefore}
-			/>
+		<section className="relative h-screen w-full">
+			{/* 頂部漸層暗角：把照片上緣稍微壓暗，
+			    讓 nav 的 mix-blend-difference 在中間調（接近 50% 灰）的圖上也拉得開反差 */}
+			<div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[22vh] bg-linear-to-b from-black/10 to-transparent" />
+			{/* 手機（< 768px）：單欄輪播整張原圖（左右切半的圖在直向版型拼不回來） */}
+			<div className="h-full w-full md:hidden">
+				<CarouselColumn
+					side="left"
+					images={mobileImages}
+					active={mobileActive}
+					before={mobileBefore}
+					full
+				/>
+			</div>
+			{/* 平板（768 〜 1023px）：同樣單欄，但吃 tablet 資料夾的圖 */}
+			<div className="hidden h-full w-full md:block lg:hidden">
+				<CarouselColumn
+					side="left"
+					images={tabletImages}
+					active={tabletActive}
+					before={tabletBefore}
+					full
+				/>
+			</div>
+			{/* lg 以上：左右兩欄各自輪播，中縫拼接 */}
+			<div className="hidden h-full w-full lg:flex flex-row">
+				<CarouselColumn
+					side="left"
+					images={leftImages}
+					active={leftActive}
+					before={leftBefore}
+				/>
+				<CarouselColumn
+					side="right"
+					images={rightImages}
+					active={rightActive}
+					before={rightBefore}
+				/>
+			</div>
 		</section>
 	);
 }
 
 // side 決定擦入方向：left 由上往下、right 由下往上，並搭配反向視差位移
-function CarouselColumn({ side, images, active, before }) {
+// full = 單欄整張原圖模式：填滿整個容器、裁切改回置中
+function CarouselColumn({ side, images, active, before, full = false }) {
 	const hiddenClip =
 		side === "left" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)";
 	const offsetY =
@@ -98,7 +175,13 @@ function CarouselColumn({ side, images, active, before }) {
 			: bannerMotion.parallaxOffset;
 
 	return (
-		<div className="relative h-1/2 w-full overflow-hidden lg:h-full basis-1/2">
+		<div
+			className={
+				full
+					? "relative h-full w-full overflow-hidden"
+					: "relative h-full basis-1/2 overflow-hidden"
+			}
+		>
 			{images.map((src, i) => {
 				const isActive = i === active;
 				const isBefore = i === before;
@@ -119,7 +202,13 @@ function CarouselColumn({ side, images, active, before }) {
 					inset: 0,
 					backgroundImage: `url(${src})`,
 					backgroundSize: "cover",
-					backgroundPosition: "center",
+					// 貼齊中縫：左欄以右緣、右欄以左緣對齊，讓整張圖切半後中縫永遠連續
+					// full 模式是整張原圖，維持置中裁切即可
+					backgroundPosition: full
+						? "center"
+						: side === "left"
+							? "right center"
+							: "left center",
 					backgroundRepeat: "no-repeat",
 					transform: revealed
 						? "translateY(0) scale(1)"
