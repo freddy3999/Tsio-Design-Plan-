@@ -144,9 +144,11 @@ export default function Nav() {
 	return (
 		<>
 			{/* Main Navigation Bar */}
+			{/* select-none：導覽列不是可讀取的內文，關掉文字選取避免誤選 */}
 			<nav
 				className={`
                     fixed top-0 left-0 right-0 py-[4.5vh]
+                    select-none
                     transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)]
                     ${visible ? "translate-y-0" : "-translate-y-full"}
                     z-50
