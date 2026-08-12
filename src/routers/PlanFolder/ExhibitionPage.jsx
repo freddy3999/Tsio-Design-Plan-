@@ -13,7 +13,7 @@ export default function ExhibitionPage() {
 
 	// 2. 從資料陣列中查找對應的單一展覽物件
 	const currentExhibition = exhibitionsData.find(
-		(exh) => exh.id === TARGET_EXHIBITION_ID
+		(exh) => exh.id === TARGET_EXHIBITION_ID,
 	);
 
 	// 3. 安全地獲取參展人員名單。如果找不到展覽，則使用空陣列。
@@ -24,6 +24,14 @@ export default function ExhibitionPage() {
 			<main className="space-y-[10vh] lg:space-y-[20vh] mt-[15vh] lg:mt-[24vh]">
 				<div className="w-full mx-auto px-[40px] lg:max-w-7xl">
 					<Breadcrumbs word="Project" word2="Exhibition" />
+				</div>
+
+				<div className="w-full aspect-[16/9]">
+					<img
+						className="w-full h-full object-cover"
+						src={ExhibitionBanner}
+						alt=""
+					/>
 				</div>
 
 				<div className="w-full mx-auto px-[40px] max-w-7xl flex flex-col space-y-[50px] sm:flex-row sm:justify-between">
@@ -43,14 +51,6 @@ export default function ExhibitionPage() {
 					</ul>
 				</div>
 
-				<div className="w-full aspect-[1917/796]">
-					<img
-						className="w-full h-full object-cover"
-						src={ExhibitionBanner}
-						alt=""
-					/>
-				</div>
-
 				<div className="">
 					<Title
 						className="headline"
@@ -64,7 +64,7 @@ export default function ExhibitionPage() {
 					</div>
 				</div>
 
-				<div className="w-full mx-auto px-[40px] lg:max-w-7xl">
+				{/* <div className="w-full mx-auto px-[40px] lg:max-w-7xl">
 					<Title
 						className="headline"
 						title="創作與參展人員｜Artists & Contributors"
@@ -79,23 +79,19 @@ export default function ExhibitionPage() {
 					<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[2vw] gap-y-[60px] mt-[60px]">
 						{participants.map((participant, index) => (
 							<div key={index} className="flex flex-col space-y-4">
-								{/* 圖片區塊 (左上角灰色/米色方塊) */}
 								<div className="w-full aspect-square bg-gray-100 flex-shrink-0">
 									<img
-										src={defaultAvatar} // 假設這裡使用預設圖片
+										src={defaultAvatar}
 										alt={participant.name}
-										className="w-full h-full object-cover opacity-0" // 圖片尚不存在時，保持灰色區塊
+										className="w-full h-full object-cover opacity-0"
 									/>
 								</div>
 
-								{/* 文字內容區塊 */}
 								<div className="space-y-1">
-									{/* 姓名 (如圖中的「謝語暢」) */}
 									<h4 className="text-lg font-bold text-gray-900">
 										{participant.name}
 									</h4>
 
-									{/* 簡介 (bio) */}
 									<p className="text-sm text-gray-500 mt-2">
 										{participant.bio}
 									</p>
@@ -103,9 +99,9 @@ export default function ExhibitionPage() {
 							</div>
 						))}
 					</div>
-				</div>
+				</div> */}
 
-				<div className="">
+				{/* <div className="">
 					<Title
 						className="headline"
 						title="展區結構｜Exhibition Layout"
@@ -138,7 +134,7 @@ export default function ExhibitionPage() {
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> */}
 			</main>
 		</section>
 	);

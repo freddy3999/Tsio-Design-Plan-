@@ -19,30 +19,11 @@ export default function PlanPage() {
 				</div> */}
 
 				<div className="lg:pb-[10vh] bg-white">
-					<Title
-						className="headline"
-						titleEN="Name Origin"
-						title="計劃的由來"
-					/>
+					<Title className="headline" titleEN="Plan" title="計劃" />
 					<div className="headline mx-auto w-[82.2vw] mt-[var(--title-gap-text)] lg:w-[900px]">
 						<p className="headline bodyText lg:bodyText-web">
-							「設醮」一詞，融合了
-							<strong>設計（Design）與儀式（Ritual）</strong>的雙重意涵。
-							<br />
-							<br />
-							「設」代表設計的行為——涵蓋觀察、詮釋、介入與提案，是一種對當代議題的回應手段與創造工具。
-							「醮」源自東亞文化中的宗教儀式，為傳統社會中人與天地、社群與信仰之間的重要媒介，承載著祈福、記憶、轉化與集體行動的意義。
-							<br />
-							<br />
-							我們選擇「設醮」作為命名，意圖將設計視為一種當代儀式的再詮釋。
-							<br />
-							<br />
-							在快速變動與高度資訊化的社會中，「設計」不僅是視覺或產品的產出，更可視為一種具有召喚力的場域建構——如同「醮」的形式，設計同樣可以喚起群體關注、集結能量、傳遞願景。本計畫透過空間設計、展演行動與群體參與，嘗試在當代脈絡下召開一場「設醮」，
-							不為神明設壇，而為人群設場；
-							不為超自然祈求，而為當代生活、地方連結與文化共感開啟對話。
-							<br />
-							<br />
-							「設醮」，是一場對現實的溫柔干預，一種將創作與共感轉化為行動的當代表述方式。
+							「設醮計畫」不僅呈現作品與經驗，更著重於設計精神與創作信念的傳承。透過展覽、工作坊與互動活動，
+							引導學生回望過去、凝視當下、思考未來，將創作視為一種實踐、學習與對話的儀式，逐步形塑完整的設計教育生態。
 						</p>
 					</div>
 				</div>

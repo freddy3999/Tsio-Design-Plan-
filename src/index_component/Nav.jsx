@@ -110,10 +110,14 @@ export default function Nav() {
 	return (
 		<>
 			{/* Main Navigation Bar */}
+			{/* select-none：nav 套了 mix-blend-difference，反白的藍底會一起被反色成橘黃，
+			    而反白色由瀏覽器繪製、無法排除在混色之外。導覽列本來就不是可讀取的內文，
+			    直接關掉選取是最乾淨的解法。
+			    （Project 下拉面板與手機側邊選單都在 nav 之外、沒套混色，反白維持預設藍） */}
 			<nav
 				className={`
                     fixed top-0 left-0 right-0 py-[4.5vh]
-                    mix-blend-difference
+                    mix-blend-difference select-none
                     transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)]
                     ${visible ? "translate-y-0" : "-translate-y-full"}
                     z-50

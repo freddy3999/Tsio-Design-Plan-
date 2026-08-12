@@ -146,6 +146,12 @@
 /* 滑入：origin 在左 → 底線由左往右展開                     */
 /* 滑出：origin 回到右 → 左緣往右收，看起來是往右滑走        */
 /* 時長 / 緩動讀 motion.js 注入的 CSS 變數，改那邊即全站同步  */
+/*                                                         */
+/* 滑入、滑出用不同曲線是刻意的：                            */
+/* scaleX 屬於空間屬性，照系統慣例該用 spring（同 nav 收合、  */
+/* Project 下拉面板、加號轉減號），滑入過衝一下手感才一致。    */
+/* 但滑出是 scaleX 1→0，spring 的過衝會掠過負值，以 right 為  */
+/* 原點時會在文字右緣閃出一小截反向線段，所以滑出維持 standard。*/
 /* ----------------------------------------------------- */
 @utility nav-underline {
 	position: relative;
@@ -168,6 +174,7 @@
 	&:focus-visible::after {
 		transform: scaleX(1);
 		transform-origin: left;
+		transition: transform var(--motion-base) var(--motion-ease-spring);
 	}
 }
 
