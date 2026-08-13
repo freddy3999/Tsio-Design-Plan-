@@ -1,6 +1,6 @@
 import WorkList from "../assets/imgs/WorkList.jpg";
 import article_1 from "../assets/imgs/article_1.jpg";
-import ExhibitionList from "../assets/imgs/ExhibitionList.jpg";
+import ExhibitionBanner from "../assets/imgs/ExhibitionBanner.webp";
 
 export const workshopImages = {
 	"UX-W001-cover": WorkList,
@@ -22,7 +22,8 @@ export const articleImages = {
 	"ALUM-A010-cover": article_1,
 };
 
+// key 要與 exhibitions.json 的 image 欄位一致，格式沿用 {id}-cover。
+// CardLayout 只在 key 含 "-E00" 時才來查這張表，所以 key 必須帶展覽 id。
 export const exhibitionImages = {
-	"EXH-2024": ExhibitionList,
-	"EXH-2023": ExhibitionList,
+	"2024-E001-cover": ExhibitionBanner,
 };

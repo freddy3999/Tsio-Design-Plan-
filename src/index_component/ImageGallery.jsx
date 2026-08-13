@@ -8,7 +8,7 @@ import img2 from "../assets/photos/DSCF8885.webp"; // 右側・橫幅（大）
 import img3 from "../assets/photos/RYK01728.webp"; // 左下・橫幅（大）
 import floatImg1 from "../assets/photos/DSCF8773.webp"; // 漂浮小圖 1
 import floatImg2 from "../assets/photos/RYK01732.webp"; // 漂浮小圖 2
-import floatImg3 from "../assets/photos/RYK02408.webp"; // 漂浮小圖 3
+import floatImg3 from "../assets/photos/RYK02407.webp"; // 漂浮小圖 3
 // ⬆⬆⬆ 找到正式圖片後，只要替換這幾行 import 即可 ⬆⬆⬆
 
 // 中央 sticky 標語：圖片捲動流過、標語釘在視窗中央（文案可自行替換）
@@ -68,7 +68,7 @@ const galleryImages = [
 		alt: "",
 		speed: -1.2,
 		className:
-			"hidden md:block md:absolute md:top-[80%] md:right-[9%] md:w-[15%] aspect-[5/4]",
+			"hidden md:block md:absolute md:top-[80%] md:right-[9%] md:w-[25%] aspect-[5/4]",
 	},
 ];
 

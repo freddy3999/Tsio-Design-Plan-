@@ -127,6 +127,14 @@
 	color: #303030;
 }
 
+@utility bodyText-bold-web {
+	font-family: "Shippori Mincho", serif;
+	font-size: 16px;
+	letter-spacing: 0.1em;
+	font-weight: 600;
+	color: #303030;
+}
+
 @utility concept-title {
 	font-family: "Shippori Mincho", serif;
 	font-size: 36px;

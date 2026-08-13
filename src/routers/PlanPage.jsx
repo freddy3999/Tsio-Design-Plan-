@@ -5,7 +5,8 @@ import Title from "../small_component/Title";
 import Bg_gray from "../assets/bg_gray.jpg";
 import ExhibitionCard from "../small_component/ExhibitionCard";
 
-import Exhibition_1 from "../assets/imgs/Exhibition_1.jpg";
+import Others from "../assets/imgs/Exhibition_1.jpg";
+import Exhibition from "../assets/imgs/ExhibitionBanner.webp";
 import useScrollReveal from "../hooks/useScrollReveal";
 
 export default function PlanPage() {
@@ -40,12 +41,12 @@ export default function PlanPage() {
 						subtitle="主題策展"
 						description={
 							<>
-								「遠方還未說的話」——青年設計師與創作者的年度主題展。
+								「對話的對話」——青年設計師與創作者的主題展。
 								<br />
-								涵蓋平面、空間、影像與裝置，讓未曾說出口的經驗化為作品。
+								涵蓋平面、空間、影像與裝置。
 							</>
 						}
-						imageSrc={Exhibition_1}
+						imageSrc={Exhibition}
 					/>
 					<ExhibitionCard
 						link="/Plan/Workshop"
@@ -59,7 +60,7 @@ export default function PlanPage() {
 								親手做一件作品，也為自己設下一場微型儀式。
 							</>
 						}
-						imageSrc={Exhibition_1}
+						imageSrc={Others}
 					/>
 					<ExhibitionCard
 						link="/Plan/Market"
@@ -74,7 +75,7 @@ export default function PlanPage() {
 								逛市集不只是購物，而是與物件、與人、與自己的一場對話。
 							</>
 						}
-						imageSrc={Exhibition_1}
+						imageSrc={Others}
 					/>
 					<ExhibitionCard
 						link="/Plan/Lecture"
@@ -88,7 +89,7 @@ export default function PlanPage() {
 								那些掙扎、遲疑與轉彎，說給還在路上的你聽。
 							</>
 						}
-						imageSrc={Exhibition_1}
+						imageSrc={Others}
 					/>
 					{/* <ExhibitionCard
 						link="/Plan/Other"
@@ -103,7 +104,7 @@ export default function PlanPage() {
 								精選與展覽主題呼應的作品——關於遠方、離開與回來。
 							</>
 						}
-						imageSrc={Exhibition_1}
+						imageSrc={Others}
 					/> */}
 					<div className="max-w-[82.2vw] mx-auto">
 						<hr className="border-t border-primary my-8 mb-[70px]" />

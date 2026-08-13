@@ -160,8 +160,9 @@ export default function Nav() {
 						<NavLink
 							to="/"
 							onClick={handleNavLinkClick}
-							className={`transition-opacity duration-[var(--motion-base)] ${menuOpen ? "opacity-0" : "opacity-100"
-								}`}
+							className={`transition-opacity duration-[var(--motion-base)] ${
+								menuOpen ? "opacity-0" : "opacity-100"
+							}`}
 						>
 							<img
 								className="w-[150px] h-auto lg:w-[250px]"
@@ -190,16 +191,19 @@ export default function Nav() {
 						>
 							<div className="w-6 h-6 flex flex-col justify-center items-center">
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${menuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
-										}`}
+									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${
+										menuOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
+									}`}
 								></span>
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${menuOpen ? "opacity-0" : "opacity-100"
-										}`}
+									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${
+										menuOpen ? "opacity-0" : "opacity-100"
+									}`}
 								></span>
 								<span
-									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${menuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
-										}`}
+									className={`w-6 h-0.5 bg-current transition-all duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${
+										menuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
+									}`}
 								></span>
 							</div>
 						</button>
@@ -219,10 +223,7 @@ export default function Nav() {
 											onMouseEnter={openProject}
 											onMouseLeave={scheduleCloseProject}
 										>
-											<NavLink
-												to={to}
-												className="flex items-center gap-[10px]"
-											>
+											<NavLink to={to} className="flex items-center gap-[10px]">
 												{label}
 												{/* 加號 → 減號：整個圖示轉 90 度（中途呈斜線），
 												    橫線同時淡出，留下的直線轉完剛好變成橫的減號 */}
@@ -251,28 +252,30 @@ export default function Nav() {
 				</div>
 			</nav>
 
-			{/* Project 下拉面板：獨立於 nav 之外渲染（避免被 mix-blend-difference 反色），
-			    位置由 openProject 量測 Project 項目的座標而來 */}
+			{/* Project 下拉面板：獨立於 nav 之外渲染，位置由 openProject 量測 Project 項目的座標而來。
+			    z-60 必須高於 nav 的 z-50 —— nav 有 py-[4.5vh]，盒子比文字往下多出約 32px，
+			    比 nav 低的話那段 padding 會蓋住面板頂端，游標離開 li 後就進不到面板、
+			    延遲關閉一到就消失（本層的盒子含 ul 的 mt，本來就是接著 li 底緣開始的）。 */}
 			<div
 				onMouseEnter={openProject}
 				onMouseLeave={scheduleCloseProject}
 				style={{ left: panelPos.left, top: panelPos.top }}
 				className={`
-					fixed z-40 hidden lg:block
+					fixed z-60 hidden lg:block
 					transition-[opacity,translate] duration-[var(--motion-base)] ease-[var(--motion-ease-spring)]
-					${projectOpen
-						? "pointer-events-auto translate-y-0 opacity-100"
-						: "pointer-events-none -translate-y-2 opacity-0"
+					${
+						projectOpen
+							? "pointer-events-auto translate-y-0 opacity-100"
+							: "pointer-events-none -translate-y-2 opacity-0"
 					}
 				`}
 			>
-				{/* mt 是 Project 文字到面板的間距；游標跨越這段空隙靠 150ms 延遲關閉撐住 */}
+				{/* mt 是 Project 文字到面板的間距。這段空隙屬於外層的可命中範圍
+				    （外層 fixed 建立 BFC，margin 不會穿透出去），游標經過時會觸發
+				    外層的 onMouseEnter，不必靠延遲關閉硬撐 */}
 				<ul className="mt-[14px] min-w-[140px] rounded-lg bg-secondary px-[20px] py-[6px] shadow-lg">
 					{PROJECT_ITEMS.map(({ to, label }) => (
-						<li
-							key={to}
-							className="border-b border-primary/15 last:border-b-0"
-						>
+						<li key={to} className="border-b border-primary/15 last:border-b-0">
 							<NavLink
 								to={to}
 								onClick={() => setProjectOpen(false)}
@@ -288,10 +291,11 @@ export default function Nav() {
 			<div
 				className={`
                 fixed inset-0 z-40 lg:hidden transition-opacity duration-[var(--motion-base)]
-                ${menuOpen
-						? "opacity-100 pointer-events-auto"
-						: "opacity-0 pointer-events-none"
-					}
+                ${
+									menuOpen
+										? "opacity-100 pointer-events-auto"
+										: "opacity-0 pointer-events-none"
+								}
             `}
 			>
 				<div

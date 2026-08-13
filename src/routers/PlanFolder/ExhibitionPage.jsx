@@ -4,7 +4,7 @@ import Breadcrumbs from "../../small_component/Breadcrumbs";
 import Title from "../../small_component/Title";
 import exhibitionsData from "../../data/exhibitions";
 
-import ExhibitionBanner from "../../assets/imgs/ExhibitionBanner.png";
+import ExhibitionBanner from "../../assets/imgs/ExhibitionBanner.webp";
 import ExhibitionLayout from "../../assets/imgs/ExhibitionLayout.jpg";
 import defaultAvatar from "../../assets/imgs/defaultAvatar.jpg";
 
@@ -34,20 +34,26 @@ export default function ExhibitionPage() {
 					/>
 				</div>
 
-				<div className="w-full mx-auto px-[40px] max-w-7xl flex flex-col space-y-[50px] sm:flex-row sm:justify-between">
+				{/* 寬度與下方「主題概念」內文一致（82.2vw / lg:900px）。
+				    容器比原本的 max-w-7xl 窄，兩欄並排的斷點要從 sm 移到 md，
+				    否則 640px 時標題欄與資訊欄會貼在一起、資訊還會折行。 */}
+				<div className="mx-auto w-[82.2vw] flex flex-col gap-[50px] md:flex-row md:justify-between lg:w-[900px]">
 					<div className="">
-						<p className="subtitle lg:subtitle-web">遠方還未說的話</p>
-						<p className="bodyText lg:bodyText-web">《設醮》2025 年主題展覽</p>
-						<p className="bodyText lg:bodyText-web">
-							The Words Yet to Be Spoken from Afar
+						<p className="subtitle lg:subtitle-bold-web lg:flex-1">
+							對話的對話—在彼此的痕跡中流動
+						</p>
+						{/* <p className="bodyText lg:bodyText-web">《設醮》2025 年主題展覽</p> */}
+						<p className="bodyText lg:bodyText-bold-web">
+							Dialogues of Being — Flowing Through Our Traces
 						</p>
 					</div>
-					<ul className="bodyText lg:bodyText-web">
-						<li>展期：2025.08.15（五）– 08.25（日）</li>
+					<ul className="bodyText lg:bodyText-web lg:flex-1">
+						<li>展期：2026年9月21日─10月30日</li>
 						<li>時間：12:00–19:00（週一休展）</li>
-						<li>地點：設醮空間站（假地址）</li>
-						<li>入場方式：免費入場，部分作品需預約體驗</li>
-						<li>主辦單位：設醮策展計劃 Sez-Jiao Project</li>
+						<li>
+							地點：長庚大學校園（主場地：管理大樓天井空間），其中作品坐落於管理大樓3、4、6、7樓走廊及通道，1樓馬堤餐廳旁空地，圖書館人文空間及展覽區。
+						</li>
+						{/* <li>主辦單位：設醮策展計劃 Sez-Jiao Project</li> */}
 					</ul>
 				</div>
 
