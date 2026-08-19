@@ -154,6 +154,19 @@ export default function Nav() {
                     z-50
                 `}
 			>
+				{/* 深色區塊（Banner、Footer）上的淡漸層遮罩：白字壓在照片上容易糊掉，
+				    由上往下加一層很淡的暗色把對比拉開。刻意壓低濃度，不搶視覺。 */}
+				<div
+					aria-hidden="true"
+					className="pointer-events-none absolute inset-x-0 top-0 h-[calc(100%+14vh)] -z-10"
+					style={{
+						background:
+							"linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.07) 50%, rgba(0,0,0,0) 100%)",
+						opacity: isWhite ? 1 : 0,
+						transition:
+							"opacity var(--motion-base) var(--motion-ease-standard)",
+					}}
+				/>
 				<div className="w-[92.2vw] mx-auto">
 					<div className="w-full flex justify-between items-center lg:justify-between">
 						{/* 【變更 2】當選單展開時，動態隱藏 Logo */}
@@ -273,13 +286,22 @@ export default function Nav() {
 				{/* mt 是 Project 文字到面板的間距。這段空隙屬於外層的可命中範圍
 				    （外層 fixed 建立 BFC，margin 不會穿透出去），游標經過時會觸發
 				    外層的 onMouseEnter，不必靠延遲關閉硬撐 */}
-				<ul className="mt-[14px] min-w-[140px] rounded-lg bg-secondary px-[20px] py-[6px] shadow-lg">
-					{PROJECT_ITEMS.map(({ to, label }) => (
+				{/* overflow-hidden：hover 底色鋪到面板邊緣時，才會被 rounded-lg 的圓角切齊。
+				    上下不留 py —— 外層的內距 hover 蓋不到，會在首尾留一條沒變色的淺帶。
+				    那段留白改由首尾兩項自己的 pt / pb 撐出來（6 + 10 = 16，外觀不變）。 */}
+				<ul className="mt-[14px] min-w-[140px] overflow-hidden rounded-lg bg-secondary px-[20px] shadow-lg">
+					{PROJECT_ITEMS.map(({ to, label }, i) => (
 						<li key={to} className="border-b border-primary/15 last:border-b-0">
+							{/* hover 換底色（secondary → gray，設計系統既有的深一階）。
+							    -mx 抵銷 ul 的左右內距，讓底色鋪滿整條、不是縮在文字後面，
+							    px 再把文字推回原位；分隔線留在 li 上，維持原本內縮的樣子。
+							    純顏色變化 → 用 motion 的 fast（同 Footer、Breadcrumbs 的慣例）。 */}
 							<NavLink
 								to={to}
 								onClick={() => setProjectOpen(false)}
-								className="block py-[10px] bodyText"
+								className={`block -mx-[20px] px-[20px] py-[10px] bodyText transition-colors duration-[var(--motion-fast)] ease-[var(--motion-ease-standard)] hover:bg-gray focus-visible:bg-gray ${
+									i === 0 ? "pt-[16px]" : ""
+								} ${i === PROJECT_ITEMS.length - 1 ? "pb-[16px]" : ""}`}
 							>
 								{label}
 							</NavLink>

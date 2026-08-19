@@ -208,3 +208,41 @@
 	/* 如果你想讓點點更靠近卡片，而不是靠容器底部 */
 	/* top: 100%; */
 }
+
+/* ----------------------------------------------------- */
+/* 跑馬燈公告（Marquee.jsx）                               */
+/* 白底 + 上下兩條細線（不是整條深色底），文字無限往左捲      */
+/*                                                         */
+/* 橫幅厚度做成變數，想調粗細改 --marquee-h 一個值就好。    */
+/* 速度讀 motion.js 注入的 --motion-marquee，改那邊即可。   */
+/* 緩動固定 linear —— 跑馬燈一旦加減速就會看起來像卡頓，     */
+/* 這是全站唯一不套 motion token 曲線的動畫。               */
+/* ----------------------------------------------------- */
+:root {
+	--marquee-h: 44px;
+}
+
+@keyframes marquee-scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		/* 軌道內容剛好排兩份，位移一半就無縫接回原點 */
+		transform: translateX(-50%);
+	}
+}
+
+.marquee-track {
+	animation: marquee-scroll var(--motion-marquee) linear infinite;
+}
+
+/* 游標停在橫幅上時暫停，方便看清楚文字與點擊 */
+.marquee-bar:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee-track {
+		animation: none;
+	}
+}

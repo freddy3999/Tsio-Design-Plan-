@@ -28,6 +28,14 @@ export const interval = {
 	crossfade: 6000, // 手機圖片交叉淡入
 };
 
+// ---- 跑馬燈公告（Marquee）----
+export const marquee = {
+	// 跑完一整輪的時間 (ms)：數字越大跑越慢。
+	// 實際速度也受文字長度影響（同樣時間要跑完更長的內容就會變快），
+	// 換過公告文字後覺得快慢跑掉，回來微調這一個值即可。
+	duration: 32000,
+};
+
 // ---- 進場動畫（ScrollReveal，JS 專用）----
 export const REVEAL_SELECTOR = ".headline";
 export const reveal = {
@@ -72,4 +80,5 @@ export function applyMotionVars() {
 	root.setProperty("--motion-ease-standard", easing.standard);
 	root.setProperty("--motion-ease-wipe", easing.wipe);
 	root.setProperty("--motion-ease-spring", easing.spring);
+	root.setProperty("--motion-marquee", `${marquee.duration}ms`);
 }

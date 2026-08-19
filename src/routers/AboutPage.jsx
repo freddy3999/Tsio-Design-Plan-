@@ -1,7 +1,7 @@
 import Footer from "../index_component/Footer";
 import Nav from "../index_component/Nav";
 import Title from "../small_component/Title";
-import AboutPage_1 from "../assets/photos/AboutPage_1.jpg";
+import AboutPage_1 from "../assets/photos/AboutPage_1.webp";
 import AboutPage_2 from "../assets/photos/AboutPage_2.jpg";
 import AboutPage_3 from "../assets/photos/AboutPage_3.jpg";
 import { useEffect, useState } from "react";
@@ -40,7 +40,7 @@ export default function AboutPage() {
 							<br />
 							<br />
 							「設醮」的誕生，是我們對設計這件事的再定義
-							我們在此回望學系的歷程，感念前輩的經驗與指引，也為後輩祈願新的啟程與祝福。 每一件作品，都是一次獻禮；每一位創作者，以最真誠的方式，
+							我們在此回望學系的歷程，感念前輩的經驗與指引，也為後輩祈願新的啟程與祝福。每一件作品，都是一次獻禮；每一位創作者，以最真誠的方式，
 							讓創作成為對未來的祝福、也讓設醮成為設計者之間共享的信仰與記憶。
 						</p>
 					</div>

@@ -1,7 +1,7 @@
 import Breadcrumbs from "../../small_component/Breadcrumbs";
 import ExhibitionLayout from "../../assets/imgs/ExhibitionLayout.jpg";
 import ExhibitionBanner from "../../assets/imgs/ExhibitionBanner.webp";
-import { Link } from "react-router";
+import MoreLink from "../../small_component/MoreLink";
 
 export default function WorkshopPage() {
 	return (
@@ -65,13 +65,9 @@ export default function WorkshopPage() {
 					</div>
 				</div>
 
-				<div className="max-w-[82.2vw] mx-auto space-y-[30px]">
-					<Link
-						to="/Plan/Workshop/List"
-						className="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block w-fit"
-					>
-						View More
-					</Link>
+				{/* 改用全站共用的 MoreLink（細框 outline + 箭頭），與首頁「了解更多」一致 */}
+				<div className="max-w-[82.2vw] mx-auto">
+					<MoreLink to="/Plan/Workshop/List" label="了解更多" />
 				</div>
 			</main>
 		</section>
