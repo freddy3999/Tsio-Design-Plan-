@@ -11,7 +11,7 @@ export default function MarketPage() {
 		<section className="space-y-[10vh]">
 			<main className="space-y-[10vh] lg:space-y-[20vh] mt-[15vh] lg:mt-[24vh]">
 				<div className="w-full mx-auto px-[40px] lg:max-w-7xl">
-					<Breadcrumbs word="Project" word2="Market" />
+					<Breadcrumbs word="Plan" word2="Market" />
 				</div>
 
 				<div className="space-y-[30px]">

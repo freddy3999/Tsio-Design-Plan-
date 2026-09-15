@@ -112,8 +112,8 @@ const router = createBrowserRouter(
 		},
 	],
 	{
-		basename: "/tsio-design",
-	}
+		basename: "/",
+	},
 );
 
 // 啟動時把 motion / spacing token 注入成 CSS 變數，讓 Tailwind class 的 var() 生效
@@ -123,5 +123,5 @@ applySpacingVars();
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<RouterProvider router={router} />
-	</StrictMode>
+	</StrictMode>,
 );

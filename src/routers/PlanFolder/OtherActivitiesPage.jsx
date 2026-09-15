@@ -11,7 +11,7 @@ export default function OtherActivitiesPage() {
 		<section className="space-y-[10vh]">
 			<main className="space-y-[10vh] lg:space-y-[20vh] mt-[15vh] lg:mt-[24vh]">
 				<div className="w-full mx-auto px-[40px] lg:max-w-7xl">
-					<Breadcrumbs word="Project" word2="Other" />
+					<Breadcrumbs word="Plan" word2="Other" />
 				</div>
 
 				<div className="space-y-[30px]">
@@ -81,7 +81,7 @@ export default function OtherActivitiesPage() {
 						/>
 					</div>
 
-					<div className="md:w-[400px] space-y-[20px] lg:space-y-[35px] lg:order-[-1]">
+					<div className="md:w-[400px] min-[1180px]:flex-1 space-y-[20px] lg:space-y-[35px] lg:order-[-1]">
 						<h2 className="subtitle-bold lg:subtitle-bold-web">
 							活動資訊｜Event Info
 						</h2>

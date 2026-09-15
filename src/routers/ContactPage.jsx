@@ -6,7 +6,7 @@ import ThreadIcon from "../assets/icons/thread_black.png";
 export default function ContactPage() {
 	return (
 		<section className="space-y-[20vh]">
-			<main className="w-full mx-auto px-[40px] space-y-[5vh] mt-[15vh] xl:px-0 lg:max-w-7xl lg:mt-[24vh] lg:space-y-[20vh]">
+			<main className="w-full mx-auto px-[40px] space-y-[5vh] mt-[15vh] lg:max-w-7xl lg:mt-[24vh] lg:space-y-[20vh]">
 				<div className=" space-y-[5vh] bodyText lg:bodyText-web lg:space-y-0 lg:flex lg:justify-between">
 					<address>
 						<dl className="not-italic space-y-[20px] lg:space-y-[35px]">

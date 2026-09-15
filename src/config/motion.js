@@ -49,6 +49,17 @@ export const reveal = {
 	// reset: false, // 需要每次捲回都重播時可打開
 };
 
+// ---- 換頁進場（PageTransition，CSS 專用）----
+// 切換頁面時整頁淡入＋微微上浮，刻意沿用 reveal 的同一組手感，
+// 讓「捲到就淡入」和「換頁就淡入」看起來是同一種語言。
+// 想讓換頁更俐落：把 duration 調小（例如 duration.base * 2 = 600）；
+// 想讓上浮更明顯：把 distance 調大（例如 "40px"）。
+export const pageEnter = {
+	duration: reveal.duration,
+	distance: reveal.distance,
+	easing: reveal.easing,
+};
+
 // ---- 首頁散排圖庫捲動視差（JS 專用，ImageGallery）----
 // 每張圖以不同速度跟隨捲動，產生前後景深的漂浮感
 export const galleryParallax = {
@@ -81,4 +92,7 @@ export function applyMotionVars() {
 	root.setProperty("--motion-ease-wipe", easing.wipe);
 	root.setProperty("--motion-ease-spring", easing.spring);
 	root.setProperty("--motion-marquee", `${marquee.duration}ms`);
+	root.setProperty("--page-enter-duration", `${pageEnter.duration}ms`);
+	root.setProperty("--page-enter-distance", pageEnter.distance);
+	root.setProperty("--page-enter-ease", pageEnter.easing);
 }

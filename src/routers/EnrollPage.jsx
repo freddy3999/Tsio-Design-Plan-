@@ -1,36 +1,25 @@
-import { NavLink } from "react-router";
-import Title from "../small_component/Title";
+import enrolls from "../data/enrolls";
+import EnrollCard from "../small_component/EnrollCard";
 
 export default function EnrollPage() {
 	return (
-		<section className="space-y-[10vh]">
-			<main className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-3xl mt-[15vh] lg:mt-[24vh] space-y-[var(--title-gap-text)]">
-				<Title title="報名參與" titleEN="Enroll" layout="horizontal" />
+		<section className="w-full mx-auto px-[40px] lg:max-w-7xl mt-[15vh] lg:mt-[24vh]">
+			{/* 標題規格與文章總覽一致（置中 + heading-bold / heading-bold-web） */}
+			<h2 className="text-center heading-bold lg:heading-bold-web">報名參與</h2>
 
-				<div className="space-y-[20px] lg:space-y-[35px] bodyText lg:bodyText-web text-center">
-					<p>
-						想加入設醮的活動嗎？無論是工作坊、講座還是市集，
-						我們都歡迎你的參與。各項活動的報名時間與方式，
-						會在對應的活動頁面與社群公告。
-					</p>
-					<p>目前若有報名或合作需求，歡迎直接與我們聯絡。</p>
+			{enrolls.length > 0 ? (
+				// 格線與文章總覽同一組設定，卡片在三頁之間看起來就是同一套系統
+				<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[2vw] gap-y-[60px] mt-[60px]">
+					{enrolls.map((item) => (
+						<EnrollCard key={item.id} item={item} />
+					))}
 				</div>
-
-				<div className="flex flex-col items-center gap-[20px] sm:flex-row sm:justify-center">
-					<NavLink
-						to="/Plan"
-						className="inline-block bodyText lg:bodyText-web border border-primary px-[32px] py-[14px] tracking-[0.1em] text-primary transition-colors duration-[var(--motion-base)] hover:bg-primary hover:text-secondary"
-					>
-						查看所有活動
-					</NavLink>
-					<NavLink
-						to="/Contact"
-						className="inline-block bodyText lg:bodyText-web border border-primary px-[32px] py-[14px] tracking-[0.1em] text-primary transition-colors duration-[var(--motion-base)] hover:bg-primary hover:text-secondary"
-					>
-						聯絡我們
-					</NavLink>
-				</div>
-			</main>
+			) : (
+				// 空狀態只留一句話。上下用 py 撐開，避免頁面過短讓 Footer 頂上來
+				<p className="text-center heading-bold lg:heading-bold-web mt-[60px] py-[15vh]">
+					目前沒有開放報名的活動
+				</p>
+			)}
 		</section>
 	);
 }

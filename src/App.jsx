@@ -1,8 +1,9 @@
 // App.jsx
 import './App.css';
-import { Outlet, ScrollRestoration } from 'react-router';
+import { ScrollRestoration } from 'react-router';
 import Nav from './index_component/Nav';
 import Footer from './index_component/Footer';
+import PageTransition from './small_component/PageTransition';
 
 function App() {
   // bg-white 是全站底色。Nav 顏色改由 data-navcolor 自適應偵測（見 Nav.jsx），
@@ -16,8 +17,10 @@ function App() {
     <div className="relative flow-root w-full space-y-[120px] bg-white">
       <ScrollRestoration /> {/* 解決捲軸問題 */}
       <Nav />
-      {/* Outlet 會根據路由渲染正確的子頁面 */}
-      <Outlet />
+      {/* PageTransition 內含 Outlet，會根據路由渲染正確的子頁面，
+          並在每次換頁時讓整頁淡入上浮（動畫見 App.css 的 .page-enter）。
+          Nav / Footer 刻意留在外層，換頁時不跟著閃。 */}
+      <PageTransition />
       <Footer />
     </div>
   );

@@ -107,7 +107,7 @@
 
 @utility bodyText-large-bold-web {
 	font-family: "Shippori Mincho", serif;
-	font-size: 18px;
+	font-size: 20px;
 	letter-spacing: 0.1em;
 	font-weight: 600;
 	color: #303030;
@@ -115,7 +115,7 @@
 
 @utility bodyText-large-web {
 	font-family: "Shippori Mincho", serif;
-	font-size: 18px;
+	font-size: 20px;
 	letter-spacing: 0.1em;
 	color: #303030;
 }
@@ -149,6 +149,25 @@
 	color: #303030;
 }
 
+@utility label {
+	font-family: "Shippori Mincho", serif;
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	color: #303030;
+}
+
+/* 展覽作品標題：覆蓋 bodyText 的預設黑色，但不影響全站其他 bodyText。 */
+.exhibition-work-title.bodyText {
+	color: #17467d;
+}
+
+/* 餘波區段的標題與副標：Title 元件內仍沿用全站字體設定。 */
+.exhibition-ripple-title.subtitle-bold,
+.exhibition-ripple-title.subtitle-bold-web,
+.exhibition-ripple-subtitle.bodyText {
+	color: #17467d;
+}
+
 /* ----------------------------------------------------- */
 /* Nav hover 底線                                          */
 /* 滑入：origin 在左 → 底線由左往右展開                     */
@@ -180,6 +199,16 @@
 
 	&:hover::after,
 	&:focus-visible::after {
+		transform: scaleX(1);
+		transform-origin: left;
+		transition: transform var(--motion-base) var(--motion-ease-spring);
+	}
+
+	/* 當前頁面：底線常駐顯示，不需要 hover。
+	   aria-current="page" 是 NavLink 命中路由時自動加上的屬性（含子路由）；
+	   data-active 給沒有走 NavLink 判斷的情況（例如 Project 下拉觸發項）手動標記用。 */
+	&[aria-current="page"]::after,
+	&[data-active="true"]::after {
 		transform: scaleX(1);
 		transform-origin: left;
 		transition: transform var(--motion-base) var(--motion-ease-spring);
@@ -243,6 +272,41 @@
 
 @media (prefers-reduced-motion: reduce) {
 	.marquee-track {
+		animation: none;
+	}
+}
+
+/* ----------------------------------------------------- */
+/* 換頁進場（PageTransition.jsx）                          */
+/* 切換路由時整頁淡入 + 由下往上浮 20px，                   */
+/* 跟 ScrollReveal 的 .headline 是同一組手感。              */
+/*                                                         */
+/* 參數全部讀 motion.js 注入的 --page-enter-*，             */
+/* 要調快慢／幅度／曲線請改 config/motion.js 的 pageEnter。 */
+/*                                                         */
+/* fill-mode 用 backwards 不用 forwards/both：              */
+/* 只在「動畫開始前」套用起始狀態，動畫跑完就完全放手，      */
+/* 元素上不會殘留 transform（殘留的話會變成 fixed/sticky    */
+/* 子元素的定位基準，圖庫視差與置頂標語都會歪掉）。          */
+/* ----------------------------------------------------- */
+@keyframes page-enter {
+	from {
+		opacity: 0;
+		transform: translateY(var(--page-enter-distance));
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.page-enter {
+	animation: page-enter var(--page-enter-duration) var(--page-enter-ease)
+		backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.page-enter {
 		animation: none;
 	}
 }

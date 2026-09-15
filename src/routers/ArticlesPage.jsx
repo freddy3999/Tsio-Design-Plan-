@@ -20,7 +20,7 @@ export default function ArticlesPage() {
 	}, []);
 
 	return (
-		<section className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-7xl mt-[15vh] lg:mt-[24vh]">
+		<section className="w-full mx-auto px-[40px] lg:max-w-7xl mt-[15vh] lg:mt-[24vh]">
 			<h2 className="text-center heading-bold lg:heading-bold-web">文章總覽</h2>
 
 			{status === "loading" && (

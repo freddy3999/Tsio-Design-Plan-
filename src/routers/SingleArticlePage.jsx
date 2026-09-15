@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { url } from "../lib/paths";
+import Breadcrumbs from "../small_component/Breadcrumbs";
 // 沒上傳海報時的預設圖：與文章列表卡片用同一張，避免「列表一張、內頁另一張」的錯覺
 import defaultHero from "../assets/imgs/default-cover.jpg";
 
@@ -33,7 +34,8 @@ export default function SingleArticlePage() {
 					: "文章載入失敗，請稍後再試。";
 		return (
 			<section className="w-full mx-auto px-[40px] lg:max-w-7xl mt-[15vh] lg:mt-[24vh]">
-				<p className="bodyText lg:bodyText-web text-center">{msg}</p>
+				<Breadcrumbs word="Article" />
+				<p className="bodyText lg:bodyText-web text-center mt-[60px]">{msg}</p>
 			</section>
 		);
 	}
@@ -42,7 +44,12 @@ export default function SingleArticlePage() {
 	const hero = article.cover ? url(article.cover) : defaultHero;
 
 	return (
-		<section className="w-full mx-auto md:px-[40px] lg:max-w-7xl xl:px-0 mt-[15vh] lg:mt-[24vh]">
+		<section className="w-full mx-auto md:px-[40px] lg:max-w-7xl mt-[15vh] lg:mt-[24vh]">
+			{/* 外層 section 在 md 以上才有 px-[40px]，這層用 md:px-0 互補，
+			    否則 ≥768px 時兩層內距會疊成 80px */}
+			<div className="px-[40px] md:px-0 mb-[40px]">
+				<Breadcrumbs word="Article" word2={article.title} />
+			</div>
 			<div className="w-full space-y-[20px] lg:space-y-[2%]">
 				<div className="m-auto w-full px-[40px] pb-10 lg:px-0 md:max-w-3xl xl:max-w-5xl">
 					<h2 className="text-left heading lg:heading-web">{article.title}</h2>
@@ -58,7 +65,7 @@ export default function SingleArticlePage() {
 					<p className="bodyText lg:bodyText-web">{article.date}</p>
 				</div>
 			</div>
-			<div className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-3xl space-y-[10px] lg:space-y-[20px]">
+			<div className="w-full mx-auto px-[40px] lg:max-w-3xl space-y-[10px] lg:space-y-[20px]">
 				{article.blocks.map((block, i) => renderer(block, i))}
 			</div>
 		</section>

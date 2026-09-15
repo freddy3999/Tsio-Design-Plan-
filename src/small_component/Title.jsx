@@ -3,20 +3,26 @@ import { NavLink } from "react-router";
 export default function Title({
 	titleEN,
 	title,
+	subtitle,
 	icon,
 	link,
 	layout = "vertical",
+	className = "",
+	titleClassName = "",
+	subtitleClassName = "",
 }) {
 	// 根據 layout prop 決定要套用的 CSS 類別
-	const containerClass =
+	const containerClass = `${
 		layout === "horizontal"
 			? "group flex flex-row justify-center space-x-[10px] my-auto"
-			: "group flex flex-col items-center space-y-[10px] [writing-mode:vertical-lr] my-auto lg:space-y-[15px]";
+			: "group flex flex-col items-center space-y-[10px] [writing-mode:vertical-lr] my-auto lg:space-y-[15px]"
+	} ${className}`.trim();
 
-	const titleClass =
+	const titleClass = `${
 		layout === "horizontal"
 			? "subtitle-bold lg:subtitle-bold-web"
-			: "subtitle-bold lg:subtitle-bold-web lg:tracking-[0%]";
+			: "subtitle-bold lg:subtitle-bold-web lg:tracking-[0%]"
+	} ${titleClassName}`.trim();
 	const titleENClass =
 		layout === "horizontal"
 			? "hidden"
@@ -24,6 +30,17 @@ export default function Title({
 
 	const titleENElement = <p className={titleENClass}>{titleEN}</p>;
 	const titleElement = <p className={titleClass}>{title}</p>;
+	const subtitleElement = subtitle ? (
+		<p className={subtitleClassName}>{subtitle}</p>
+	) : null;
+	const titleContent = subtitle ? (
+		<div className="flex flex-col items-center gap-[10px]">
+			{titleElement}
+			{subtitleElement}
+		</div>
+	) : (
+		titleElement
+	);
 	// 沒傳 icon 時不渲染，避免留下空 div 造成多餘間距（純標籤模式）
 	const iconElement = icon ? <div className="group">{icon}</div> : null;
 
@@ -33,12 +50,12 @@ export default function Title({
 			{layout === "horizontal" ? (
 				<>
 					{iconElement}
-					{titleElement}
+					{titleContent}
 				</>
 			) : (
 				<>
 					{titleENElement}
-					{titleElement}
+					{titleContent}
 					{iconElement}
 				</>
 			)}

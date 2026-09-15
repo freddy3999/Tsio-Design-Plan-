@@ -29,7 +29,11 @@ export default function SingleWorkshopPage() {
 		<section className="space-y-[10vh]">
 			<main className="space-y-[10vh] lg:space-y-[15vh] mt-[15vh] lg:mt-[24vh]">
 				<div className="w-full mx-auto px-[40px] lg:max-w-7xl">
-					<Breadcrumbs word="Project" word2="Workshop" />
+					<Breadcrumbs
+						word="Plan"
+						word2="Workshop"
+						word3={workshop.title}
+					/>
 				</div>
 
 				<div className="w-full aspect-video">
@@ -40,7 +44,7 @@ export default function SingleWorkshopPage() {
 					/>
 				</div>
 
-				<div className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-3xl space-y-[var(--title-gap-text)]">
+				<div className="w-full mx-auto px-[40px] lg:max-w-3xl space-y-[var(--title-gap-text)]">
 					<Title title={workshop.title} layout="horizontal" />
 
 					<ul className="bodyText lg:bodyText-web space-y-[10px] text-center">

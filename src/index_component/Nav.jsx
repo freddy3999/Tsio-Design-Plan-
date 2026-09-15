@@ -5,7 +5,7 @@ import { NavLink, useLocation } from "react-router";
 // 桌機導覽項目（手機側邊選單另有一份，標籤不同：Articles 顯示為 News）
 const NAV_ITEMS = [
 	{ to: "/About", label: "About" },
-	{ to: "/Plan", label: "Project" },
+	{ to: "/Plan", label: "Plan" },
 	{ to: "/Enroll", label: "Enroll" },
 	{ to: "/Contact", label: "Contact" },
 	{ to: "/Articles", label: "Article" },
@@ -178,7 +178,7 @@ export default function Nav() {
 							}`}
 						>
 							<img
-								className="w-[150px] h-auto lg:w-[250px]"
+								className="w-auto h-[30px] lg:h-[40px]"
 								style={{
 									filter: isWhite
 										? "brightness(0) invert(1)"
@@ -227,8 +227,12 @@ export default function Nav() {
 							style={{ color: navInk, transition: inkTransition }}
 						>
 							{NAV_ITEMS.map(({ to, label }) => {
-								// Project：無底線、帶加號（開啟時轉成減號）、hover 展開下拉選單
+								// Project：hover 不展開底線（維持只靠加號變化提示互動），
+								// 但目前在 /Plan 任一子頁面時，文字底線常駐顯示目前所在位置
 								if (to === "/Plan") {
+									const isPlanActive =
+										location.pathname === "/Plan" ||
+										location.pathname.startsWith("/Plan/");
 									return (
 										<li
 											key={to}
@@ -237,7 +241,12 @@ export default function Nav() {
 											onMouseLeave={scheduleCloseProject}
 										>
 											<NavLink to={to} className="flex items-center gap-[10px]">
-												{label}
+												<span
+													className="nav-underline"
+													data-active={isPlanActive ? "true" : undefined}
+												>
+													{label}
+												</span>
 												{/* 加號 → 減號：整個圖示轉 90 度（中途呈斜線），
 												    橫線同時淡出，留下的直線轉完剛好變成橫的減號 */}
 												<span
@@ -351,7 +360,7 @@ export default function Nav() {
 									onClick={handleNavLinkClick}
 									className="block py-2 hover:text-gray-300 transition-colors"
 								>
-									Project
+									Plan
 								</NavLink>
 							</li>
 							<li>

@@ -14,14 +14,14 @@ const TARGET = "/Plan/ExhibitionList";
 // 一份內容重複幾次。單份用 min-w-[100vw] 保底寬過視窗，
 // 所以就算公告文字改得很短、或螢幕很寬也不會出現空隙（items 會自動撐開間距）。
 // 這個數字只影響「文字排得多密」：想更密就調大，更疏就調小。
-const REPEAT = 4;
+const REPEAT = 2;
 
 export default function Marquee({ className = "" }) {
 	return (
 		<NavLink
 			to={TARGET}
 			aria-label={MESSAGE}
-			className={`marquee-bar flex h-[var(--marquee-h)] w-full items-center overflow-hidden border-y border-primary bg-white select-none ${className}`}
+			className={`marquee-bar flex h-[var(--marquee-h)] w-full items-center overflow-hidden border-y-[0.5px] border-primary bg-white select-none ${className}`}
 		>
 			{/* 螢幕上的內容是同一句話重複多次，只讓輔助科技讀到其中一份 */}
 			<span className="sr-only">{MESSAGE}</span>

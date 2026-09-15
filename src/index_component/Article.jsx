@@ -68,7 +68,7 @@ export default function Article() {
 	}, []);
 
 	return (
-		<section className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-7xl">
+		<section className="w-full mx-auto px-[40px] lg:max-w-7xl">
 			<div className="">
 				<Title titleEN="article" title="報導" />
 			</div>

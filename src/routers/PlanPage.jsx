@@ -16,7 +16,7 @@ export default function PlanPage() {
 		<section className="space-y-[10vh]">
 			<main className="space-y-[10vh] lg:space-y-[20vh] mt-[15vh] lg:mt-[24vh]">
 				{/* <div className="w-full  mx-auto px-[40px] lg:max-w-7xl">
-					<Breadcrumbs word="Project" />
+					<Breadcrumbs word="Plan" />
 				</div> */}
 
 				<div className="lg:pb-[10vh] bg-white">
