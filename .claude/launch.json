@@ -20,6 +20,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "preview"],
       "port": 4173
+    },
+    {
+      "name": "dist-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4180", "--directory", "dist"],
+      "port": 4180,
+      "autoPort": false
     }
   ]
 }
