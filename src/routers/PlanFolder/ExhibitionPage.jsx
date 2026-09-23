@@ -14,13 +14,42 @@ import PengHsiuHsiung from "../../assets/dialoguesPhotos/PengHsiuHsiung.webp";
 
 import ExhibitionBanner from "../../assets/imgs/ExhibitionBanner.webp";
 
+// 參與人員：外層每個陣列是一行，同一行的職稱並排（窄螢幕會自動換行）
+const CREDITS = [
+	[
+		{
+			role: "參展人",
+			names: [
+				"呂奇駿",
+				"邱俊彥",
+				"藍亞青",
+				"李依霖",
+				"周宥岑",
+				"楊欣頤",
+				"黃冠瑋",
+				"張語如",
+				"高允萱",
+				"彭秀雄",
+				"許云馨",
+				"洪莞喬",
+				"賴傳旺",
+				"郭奕",
+			],
+		},
+	],
+	[
+		{ role: "總策展人", names: ["彭秀雄"] },
+		{ role: "策展團隊", names: ["許云馨", "洪莞喬", "賴傳旺", "郭奕"] },
+	],
+];
+
 const ACCUMULATION_WORKS = [
 	{
 		image: LuChiChun,
-		title: "《「畫圓的時候」從一張草圖到一部電影》",
+		title: "《「畫圖的時候」從一張草圖到一部電影》",
 		year: "2019/2020/2022",
 		artist: "呂奇駿 Lu Chi Chun",
-		role: "再現影像製作股份有限公司 製片總監",
+		role: "再現影像製作股份有限公司 藝術總監",
 		description:
 			"回溯《返校》、《消失的情人節》及 OQLIQ 倫敦時裝周影像作品的創作歷程，「草圖繪畫」是整理思緒與建構視覺語言的重要媒介；每一筆都是對畫面的推敲，也是連結抽象想像與具體影像的起點。",
 	},
@@ -31,14 +60,14 @@ const ACCUMULATION_WORKS = [
 		artist: "邱俊彥 Chun Yen Chiu",
 		role: "三刀人形工作室 當代雕塑創作者",
 		description:
-			"左右手連結左右腦，操控專用筆與敲錘；偶手裡，又各自操縱一個「我」。四偶分代表感性、創造、邏輯與探索。究竟是我在操縱他們，還是他們構成了我？",
+			"左右手連結左右腦，操控兩尊布袋戲偶；偶手裡，又各自操縱一個「我」。四偶分代表感性、創造、邏輯與探索。究竟是我在操縱他們，還是他們構成了我？",
 	},
 	{
 		image: Cyan,
 		imageClassName: "scale-[1.4]",
-		title: "《50%的自白打磨》",
+		title: "《50%的自白打樣》",
 		year: "2026",
-		artist: "藍芷軒 Cyan",
+		artist: "藍亞青 Cyan",
 		role: "喳吧工作室 負責人",
 		description:
 			"一件手工包的誕生，由手作者無數次的自白與辯駁堆疊而成。在這裡，包體刻意停留在 50% 的半成品型態。被拆掉的線頭、留有尺寸劃線痕跡的皮革及因應手感而臨時改變的洞距，都是一段段矛盾與和解的對話過程。",
@@ -47,7 +76,7 @@ const ACCUMULATION_WORKS = [
 		image: EvelynLee,
 		title: "《13》",
 		year: "2024",
-		artist: "李依琳 Evelyn Lee",
+		artist: "李依霖 Evelyn Lee",
 		role: "台灣藝術家、攝影師、電影製作人",
 		description:
 			"始於2022年，源自祖父的離世。影像從私人失落隨著在各城市與文化間移動逐漸累積，慢慢超越了對祖父的悼念，成為一場關於消逝、連結與存在的持續凝視。",
@@ -69,7 +98,7 @@ const FLOW_WORKS = [
 		image: YangHsinI,
 		title: "《審判我》",
 		year: "2026",
-		artist: "楊欣怡 Yang Hsin I",
+		artist: "楊欣頤 Yang Hsin I",
 		role: "長庚大學 工業設計學系31屆",
 		description: (
 			<>
@@ -105,7 +134,7 @@ const FLOW_WORKS = [
 		artist: "高允萱 Kao Yun Hsuan、張語如 Chang Yu Ju",
 		role: "長庚大學 工業設計學系碩士22屆",
 		description:
-			"手帳、拼貼與縫紉，是我與時間相處的方式；而陽光總能為日常添上一點明亮。將舊衣裁切、拆解、縫合，讓過往重新延續，在光影之間拾起散落的記憶，留下生活的餘痕。",
+			"一切的初衷，始於我們想在海邊尋找一份自在與寧靜。 我們希望這組家具不僅僅是空間中的物件，而是能化作一處遠離喧囂的「避風港」。能讓使用者能更沉浸在屬於自己的安寧片刻，與周遭環境完美融合。",
 	},
 ];
 
@@ -146,6 +175,38 @@ export default function ExhibitionPage() {
 						src={ExhibitionBanner}
 						alt=""
 					/>
+				</div>
+
+				<div className="">
+					<Title
+						className="headline"
+						title="參與人員｜Participants"
+						layout="horizontal"
+					/>
+					<dl className="headline mx-auto w-[82.2vw] mt-[var(--title-gap-text)] space-y-[15px] lg:w-[900px]">
+						{CREDITS.map((row) => (
+							<div
+								key={row[0].role}
+								className="flex flex-wrap gap-x-[60px] gap-y-[15px]"
+							>
+								{row.map(({ role, names }) => (
+									<div
+										key={role}
+										className="grid min-w-0 grid-cols-[6em_minmax(0,1fr)] items-baseline gap-x-[20px]"
+									>
+										<dt className="bodyText lg:bodyText-web text-primary">
+											{role}｜
+										</dt>
+										<dd className="bodyText lg:bodyText-web flex flex-wrap gap-x-[1em] gap-y-[5px]">
+											{names.map((name) => (
+												<span key={name}>{name}</span>
+											))}
+										</dd>
+									</div>
+								))}
+							</div>
+						))}
+					</dl>
 				</div>
 
 				<div className="">
@@ -202,7 +263,7 @@ export default function ExhibitionPage() {
 								key={work.title}
 								className="grid grid-cols-1 items-center gap-[25px] text-left md:grid-cols-[261px_minmax(0,1fr)] md:gap-[35px]"
 							>
-								<div className="h-[165px] w-[261px] self-start overflow-hidden">
+								<div className="aspect-[261/165] w-full self-start overflow-hidden md:w-[261px] md:self-center">
 									<img
 										className={`h-full w-full object-cover ${work.imageClassName ?? ""}`}
 										src={work.image}

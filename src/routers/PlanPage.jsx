@@ -62,7 +62,8 @@ export default function PlanPage() {
 						}
 						imageSrc={Others}
 					/>
-					<ExhibitionCard
+					{/* 暫時隱藏，日後開放時取消以下註解即可恢復市集與講座卡片。 */}
+					{/* <ExhibitionCard
 						link="/Plan/Market"
 						imageOnRight={true}
 						eyebrow="Market"
@@ -76,8 +77,8 @@ export default function PlanPage() {
 							</>
 						}
 						imageSrc={Others}
-					/>
-					<ExhibitionCard
+					/> */}
+					{/* <ExhibitionCard
 						link="/Plan/Lecture"
 						eyebrow="Talks & Sharing"
 						title="講座"
@@ -90,7 +91,7 @@ export default function PlanPage() {
 							</>
 						}
 						imageSrc={Others}
-					/>
+					/> */}
 					{/* <ExhibitionCard
 						link="/Plan/Other"
 						imageOnRight={true}

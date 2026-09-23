@@ -24,7 +24,7 @@ export default function Exhibition() {
 					className="headline h-full w-full object-cover"
 					src={ExhibitionBanner}
 					loading="lazy"
-					alt="「對話的對話 — 在彼此的痕跡中流動」展覽主視覺，2026.09.21 至 10.30 於長庚大學"
+					alt="「對話的對話 — 在彼此的痕跡中流動」展覽主視覺，2026.09.22 至 10.30 於長庚大學"
 				/>
 			</NavLink>
 			<MoreLink

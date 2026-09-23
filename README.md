@@ -318,7 +318,6 @@ Tsio-Design-Plan/
 │     ├─ bg_gray.jpg           灰底背景紋理
 │     └─ logo_footer.png       Footer 用的 logo
 │
-├─ public/vite.svg            靜態檔（目前的 favicon）
 ├─ Dockerfile                 容器建置（多階段）
 ├─ docker-compose.yml         部署設定（密碼、埠、volume、BASE_PATH）
 ├─ .dockerignore / .gitignore 排除清單

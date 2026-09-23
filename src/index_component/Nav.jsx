@@ -15,9 +15,10 @@ const NAV_ITEMS = [
 const PROJECT_ITEMS = [
 	{ to: "/Plan/ExhibitionList", label: "展覽" },
 	{ to: "/Plan/Workshop", label: "工作坊" },
-	{ to: "/Plan/Market", label: "市集" },
-	{ to: "/Plan/Lecture", label: "講座" },
-	{ to: "/Plan/Other", label: "其他活動" },
+	// 暫時隱藏，日後開放時取消以下註解即可恢復下拉選單項目。
+	// { to: "/Plan/Market", label: "市集" },
+	// { to: "/Plan/Lecture", label: "講座" },
+	// { to: "/Plan/Other", label: "其他活動" },
 ];
 
 export default function Nav() {
@@ -67,7 +68,9 @@ export default function Nav() {
 	*/
 	const [projectOpen, setProjectOpen] = useState(false);
 	const [panelPos, setPanelPos] = useState({ left: 0, top: 0 });
+	const [mobilePlanOpen, setMobilePlanOpen] = useState(false);
 	const projectLiRef = useRef(null);
+	const mobileMenuRef = useRef(null);
 	const closeTimer = useRef(null);
 
 	const openProject = () => {
@@ -113,13 +116,21 @@ export default function Nav() {
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			if (menuOpen && !event.target.closest("nav")) {
+			if (
+				menuOpen &&
+				!event.target.closest("nav") &&
+				!mobileMenuRef.current?.contains(event.target)
+			) {
 				setMenuOpen(false);
 			}
 		};
 		document.addEventListener("click", handleClickOutside);
 
 		return () => document.removeEventListener("click", handleClickOutside);
+	}, [menuOpen]);
+
+	useEffect(() => {
+		if (!menuOpen) setMobilePlanOpen(false);
 	}, [menuOpen]);
 
 	useEffect(() => {
@@ -341,9 +352,14 @@ export default function Nav() {
                     transform transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)]
                     ${menuOpen ? "translate-x-0" : "translate-x-full"}
                 `}
+					ref={mobileMenuRef}
+					data-mobile-menu
 				>
 					<div className="pt-32 px-8">
-						<ul className=" space-y-8 text-white text-lg">
+						<ul
+							className="space-y-8 bodyText-large-bold-web"
+							style={{ color: "#ffffff" }}
+						>
 							{/* ... NavLink list items ... */}
 							<li>
 								<NavLink
@@ -355,13 +371,45 @@ export default function Nav() {
 								</NavLink>
 							</li>
 							<li>
-								<NavLink
-									to="/Plan"
-									onClick={handleNavLinkClick}
-									className="block py-2 hover:text-gray-300 transition-colors"
+								<button
+									type="button"
+									onClick={() => setMobilePlanOpen((open) => !open)}
+									aria-expanded={mobilePlanOpen}
+									className="flex w-full items-center justify-between py-2 text-left bodyText-large-bold-web hover:text-gray-300 transition-colors"
+									style={{ color: "#ffffff" }}
 								>
-									Plan
-								</NavLink>
+									<span>Plan</span>
+									<span
+										aria-hidden="true"
+										className={`relative block h-[11px] w-[11px] transition-transform duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${mobilePlanOpen ? "rotate-90" : ""}`}
+									>
+										<span
+											className={`absolute left-0 top-1/2 h-[1.5px] w-full -translate-y-1/2 bg-current transition-opacity duration-[var(--motion-base)] ${mobilePlanOpen ? "opacity-0" : "opacity-100"}`}
+										/>
+										<span className="absolute left-1/2 top-0 h-full w-[1.5px] -translate-x-1/2 bg-current" />
+									</span>
+								</button>
+								<ul
+									aria-hidden={!mobilePlanOpen}
+									className={`space-y-2 overflow-hidden border-l border-white/40 pl-4 transition-[max-height,opacity,translate,margin] duration-[var(--motion-base)] ease-[var(--motion-ease-spring)] ${
+										mobilePlanOpen
+											? "pointer-events-auto mt-2 max-h-48 translate-y-0 opacity-100"
+										: "pointer-events-none mt-0 max-h-0 -translate-y-2 opacity-0"
+									}`}
+								>
+									{PROJECT_ITEMS.map(({ to, label }) => (
+										<li key={to}>
+											<NavLink
+												to={to}
+												onClick={handleNavLinkClick}
+												className="block py-1 bodyText hover:text-gray-300 transition-colors"
+												style={{ color: "#ffffff" }}
+											>
+												{label}
+											</NavLink>
+										</li>
+									))}
+								</ul>
 							</li>
 							<li>
 								<NavLink

@@ -9,7 +9,7 @@ export default function Plan() {
 			<Title titleEN="plan" title="計畫" />
 			<div className="space-y-[60px] lg:flex lg:flex-row lg:items-end lg:space-y-0 mt-[var(--title-gap)]">
 				<div className="w-full lg:w-[36.5%] space-y-[60px] mt-[60px] lg:mt-0 lg:h-[100vh] lg:flex lg:flex-col lg:justify-between">
-					<div className="w-[40%] lg:w-full aspect-[28/19]">
+					<div className="w-[40%] origin-left scale-[1.1] lg:w-full lg:scale-100 aspect-[28/19]">
 						<img
 							className="headline w-full h-full object-cover"
 							src={plan_1}
@@ -25,7 +25,7 @@ export default function Plan() {
 						</p>
 					</div>
 				</div>
-				<div className="w-[53.4%] aspect-[4/3] ml-auto lg:w-[32%]">
+				<div className="w-[53.4%] origin-right scale-[1.1] aspect-[4/3] ml-auto lg:w-[32%] lg:scale-100">
 					<img
 						className="headline w-full h-full object-cover"
 						src={plan_2}
