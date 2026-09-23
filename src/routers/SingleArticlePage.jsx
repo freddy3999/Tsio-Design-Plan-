@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { url } from "../lib/paths";
+import usePageTitle from "../hooks/usePageTitle";
 import Breadcrumbs from "../small_component/Breadcrumbs";
 // 沒上傳海報時的預設圖：與文章列表卡片用同一張，避免「列表一張、內頁另一張」的錯覺
 import defaultHero from "../assets/imgs/default-cover.jpg";
@@ -9,6 +10,7 @@ export default function SingleArticlePage() {
 	const { articleId } = useParams(); // 這裡的值其實是文章 slug
 	const [article, setArticle] = useState(null);
 	const [status, setStatus] = useState("loading"); // loading | notfound | error | ok
+	usePageTitle(article?.title); // 文章來自 API，標題載入後才知道
 
 	useEffect(() => {
 		setStatus("loading");
