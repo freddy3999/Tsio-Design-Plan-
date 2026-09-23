@@ -1,9 +1,9 @@
 // ============================================================
 //  頁面資訊：每一頁的標題、描述、分享預覽圖集中在這裡。
 //  - 打包時（vite.config.js 的 prerenderPages）為每一頁產生
-//    dist/<path>/index.html，寫入 <title> 與 og:* 標籤，
+//    dist/<path>/index.html，寫入 og:* 標籤，
 //    貼連結到 LINE / FB / IG 時就會顯示各自的標題和預覽圖。
-//  - 瀏覽時（hooks/usePageTitle.js）換頁會同步更新分頁標題。
+//  - 瀏覽器分頁標題固定是 SITE.name，不隨頁面變化。
 //
 //  新增頁面：main.jsx 加路由後，在 PAGES 補一筆即可。
 //  image 填專案內的圖片路徑（jpg / png / webp 都可），
@@ -118,13 +118,7 @@ export function articlePages(articles) {
 	}));
 }
 
-// 分頁標題：「頁名｜網站名」，首頁只顯示網站名
+// 分享預覽標題：「頁名｜網站名」，首頁只顯示網站名
 export function pageTitle(title) {
 	return title ? `${title}｜${SITE.name}` : SITE.name;
-}
-
-// 用網址找頁面資訊（忽略結尾斜線；網址大小寫需與路由一致）
-export function findPage(pathname) {
-	const p = pathname.replace(/\/+$/, "") || "/";
-	return PAGES.find((page) => page.path === p);
 }

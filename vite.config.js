@@ -22,7 +22,7 @@ const escapeHtml = (s) =>
 //  1. NAS 的 Web Station 是 Nginx、沒有 SPA fallback，/Plan/xxx 直接開會 404。
 //     替每一頁建同名資料夾放 index.html，Nginx 就找得到實體檔案，
 //     載入後再交給 react-router 顯示對應頁面。
-//  2. 每頁的 index.html 寫入各自的 <title>、description、og:* 標籤，
+//  2. 每頁的 index.html 寫入各自的 description、og:* 標籤（瀏覽器分頁標題固定為網站名），
 //     分享連結時 LINE / FB 會抓到該頁的標題與預覽圖（它們不執行 JS，只讀 HTML）。
 //  3. 預覽圖自動裁成 1200×630 jpg，輸出到 dist/og/。
 // ============================================================
@@ -73,7 +73,7 @@ function prerenderPages() {
 				// Nginx 會把 /About 導到 /About/，這裡用導向後的網址
 				const pageUrl = SITE.url + (page.path === "/" ? "/" : `${page.path}/`);
 				const head = [
-					`<title>${escapeHtml(title)}</title>`,
+					`<title>${escapeHtml(SITE.name)}</title>`,
 					`<meta name="description" content="${escapeHtml(description)}" />`,
 					page.noindex && `<meta name="robots" content="noindex" />`,
 					`<meta property="og:type" content="website" />`,

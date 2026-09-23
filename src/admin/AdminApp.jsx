@@ -6,11 +6,9 @@ import { useState } from "react";
 import { getToken, clearToken } from "./api";
 import LoginForm from "./LoginForm";
 import Dashboard from "./Dashboard";
-import usePageTitle from "../hooks/usePageTitle";
 
 export default function AdminApp() {
 	const [authed, setAuthed] = useState(!!getToken());
-	usePageTitle();
 
 	if (!authed) return <LoginForm onSuccess={() => setAuthed(true)} />;
 	return (
