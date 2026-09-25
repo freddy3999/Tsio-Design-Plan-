@@ -28,6 +28,14 @@ export const interval = {
 	crossfade: 6000, // 手機圖片交叉淡入
 };
 
+// ---- 跑馬燈公告（Marquee）----
+export const marquee = {
+	// 跑完一整輪的時間 (ms)：數字越大跑越慢。
+	// 實際速度也受文字長度影響（同樣時間要跑完更長的內容就會變快），
+	// 換過公告文字後覺得快慢跑掉，回來微調這一個值即可。
+	duration: 32000,
+};
+
 // ---- 進場動畫（ScrollReveal，JS 專用）----
 export const REVEAL_SELECTOR = ".headline";
 export const reveal = {
@@ -39,6 +47,17 @@ export const reveal = {
 	// 覺得太早 → 調大；覺得太晚 → 調小
 	viewFactor: 0.7,
 	// reset: false, // 需要每次捲回都重播時可打開
+};
+
+// ---- 換頁進場（PageTransition，CSS 專用）----
+// 切換頁面時整頁淡入＋微微上浮，刻意沿用 reveal 的同一組手感，
+// 讓「捲到就淡入」和「換頁就淡入」看起來是同一種語言。
+// 想讓換頁更俐落：把 duration 調小（例如 duration.base * 2 = 600）；
+// 想讓上浮更明顯：把 distance 調大（例如 "40px"）。
+export const pageEnter = {
+	duration: reveal.duration,
+	distance: reveal.distance,
+	easing: reveal.easing,
 };
 
 // ---- 首頁散排圖庫捲動視差（JS 專用，ImageGallery）----
@@ -72,4 +91,8 @@ export function applyMotionVars() {
 	root.setProperty("--motion-ease-standard", easing.standard);
 	root.setProperty("--motion-ease-wipe", easing.wipe);
 	root.setProperty("--motion-ease-spring", easing.spring);
+	root.setProperty("--motion-marquee", `${marquee.duration}ms`);
+	root.setProperty("--page-enter-duration", `${pageEnter.duration}ms`);
+	root.setProperty("--page-enter-distance", pageEnter.distance);
+	root.setProperty("--page-enter-ease", pageEnter.easing);
 }

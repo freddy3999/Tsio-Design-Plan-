@@ -13,9 +13,9 @@ export const titleGap = {
 
 // 內文是純文字時用這組（參照工作坊頁 h2→內文的節奏 20/35）
 export const titleGapText = {
-	mobile: 40, // <768px
-	tablet: 50, // 768–1023px（md）
-	desktop: 60, // ≥1024px（lg）
+	mobile: 30, // <768px
+	tablet: 40, // 768–1023px（md）
+	desktop: 45, // ≥1024px（lg）
 };
 
 // ============================================================

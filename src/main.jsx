@@ -13,6 +13,9 @@ import ArticlesPage from "./routers/ArticlesPage.jsx";
 import SingleArticlePage from "./routers/SingleArticlePage.jsx";
 import NotFoundPage from "./routers/NotFoundPage.jsx";
 
+// 後台（獨立於主站 App，不含 Nav / Footer）
+import AdminApp from "./admin/AdminApp.jsx";
+
 // 引入你的主頁面元件
 import Main from "./index_component/Main.jsx";
 
@@ -102,10 +105,15 @@ const router = createBrowserRouter(
 				},
 			],
 		},
+		{
+			// 後台：/admin（不套用主站 App 版面）
+			path: "/admin",
+			element: <AdminApp />,
+		},
 	],
 	{
-		basename: "/Tsio_Design",
-	}
+		basename: import.meta.env.BASE_URL.replace(/\/+$/, "") || "/",
+	},
 );
 
 // 啟動時把 motion / spacing token 注入成 CSS 變數，讓 Tailwind class 的 var() 生效
@@ -115,5 +123,5 @@ applySpacingVars();
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<RouterProvider router={router} />
-	</StrictMode>
+	</StrictMode>,
 );

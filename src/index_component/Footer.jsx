@@ -1,4 +1,4 @@
-import logoFooter from "../assets/logo_footer.png";
+import logo from "../assets/icons/logo.svg";
 import ContactInfoItem from "../small_component/ContactInfoItem";
 import IgIcon from "../assets/icons/ig.png";
 import ThreadIcon from "../assets/icons/thread.png";
@@ -41,19 +41,24 @@ export default function Footer() {
 					TO TOP
 				</p>
 			</button>
-			<footer className="w-full pt-[40px] pb-[20px] lg:pt-[80px] lg:pb-[40px] lg:px-[40px] bg-black">
+			<footer
+				className="w-full pt-[40px] pb-[20px] lg:pt-[80px] lg:pb-[40px] bg-black"
+				data-navcolor="white"
+			>
 				{/* 主要內容容器 */}
-				<div className="flex flex-col items-center gap-[70px] lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-4 lg:gap-8 lg:items-start">
+				{/* px-[40px] 放在這層（而非 <footer>），max-w-7xl 才會跟頁面內容、麵包屑同一條版心。
+				    版面在 md 就切成橫排 —— 原本卡在 lg，平板會整段掉回手機的直式。 */}
+				<div className="flex flex-col items-center gap-[70px] md:mx-auto md:max-w-7xl md:px-[40px] md:grid md:grid-cols-4 md:gap-8 md:items-start">
 					{/* Logo 和聯絡資訊 */}
-					<div className="w-auto h-[250px] flex flex-col justify-between items-center lg:col-span-2 lg:h-auto lg:items-start lg:justify-start lg:gap-[50px]">
-						<a href="/" aria-label="返回首頁">
+					<div className="w-auto h-[250px] flex flex-col justify-between items-center md:col-span-2 md:h-auto md:items-start md:justify-start md:gap-[50px]">
+						<Link to="/" aria-label="返回首頁">
 							<img
 								className="w-[140px] h-auto lg:w-[160px]"
-								src={logoFooter}
+								src={logo}
 								alt="tsio_design_plan logo"
 							/>
-						</a>
-						<div className="w-[300px] h-[130px] flex flex-col justify-between lg:w-auto lg:h-auto lg:gap-2 lg:mt-4">
+						</Link>
+						<div className="w-[300px] h-[130px] flex flex-col justify-between md:w-auto md:h-auto md:gap-2 md:mt-4">
 							<ContactInfoItem
 								Icon={IconClock}
 								srText="服務時間"
@@ -77,49 +82,49 @@ export default function Footer() {
 						</div>
 					</div>
 					{/* 關於設醮 和 計畫總覽 */}
-					<div className="space-y-[70px] lg:space-y-0 lg:flex lg:flex-row lg:space-x-[250px] lg:col-span-2 lg:justify-end">
-						<div className="space-y-[15px] w-[300px] lg:w-auto lg:space-y-[50px]">
-							<h3 className="subtitle-bold text-center text-secondary lg:text-left lg:bodyText-large-bold-web lg:text-secondary">
+					<div className="space-y-[70px] md:space-y-0 md:flex md:flex-row md:space-x-[60px] md:col-span-2 md:justify-end lg:space-x-[250px]">
+						<div className="space-y-[15px] w-[300px] md:w-auto md:space-y-[50px]">
+							<h3 className="subtitle-bold text-center text-secondary md:text-left lg:bodyText-large-bold-web lg:text-secondary">
 								關於設醮
 							</h3>
-							<ul className="footer flex flex-row justify-between text-secondary lg:flex-col lg:justify-start lg:space-y-[15px] lg:bodyText-web lg:text-secondary">
+							<ul className="footer flex flex-row justify-between text-secondary md:flex-col md:justify-start md:space-y-[15px] lg:bodyText-web lg:text-secondary">
 								<li>
-									<Link to="About">關於我們</Link>
+									<Link to="/About">關於我們</Link>
 								</li>
 								<li>
-									<Link to="Contact">聯絡我們</Link>
+									<Link to="/Contact">聯絡我們</Link>
 								</li>
 								<li>
-									<Link to="News">最新消息</Link>
+									<Link to="/Articles">最新消息</Link>
 								</li>
 							</ul>
 						</div>
-						<div className="space-y-[15px] w-[300px] lg:w-auto lg:space-y-[50px]">
-							<h3 className="subtitle-bold text-center text-secondary lg:text-left lg:bodyText-large-bold-web lg:text-secondary">
+						<div className="space-y-[15px] w-[300px] md:w-auto md:space-y-[50px]">
+							<h3 className="subtitle-bold text-center text-secondary md:text-left lg:bodyText-large-bold-web lg:text-secondary">
 								計畫總覽
 							</h3>
-							<ul className="footer flex flex-row justify-between text-secondary lg:flex-col lg:justify-start lg:space-y-[15px] lg:bodyText-web lg:text-secondary">
+							<ul className="footer flex flex-row justify-between text-secondary md:flex-col md:justify-start md:space-y-[15px] lg:bodyText-web lg:text-secondary">
 								<li>
-									<Link to="Plan/Market">市集</Link>
+									<Link to="/Plan/Market">市集</Link>
 								</li>
 								<li>
-									<Link to="Plan/Workshop">工作坊</Link>
+									<Link to="/Plan/Workshop">工作坊</Link>
 								</li>
 								<li>
-									<Link to="Plan/Exhibition">展覽</Link>
+									<Link to="/Plan/ExhibitionList">展覽</Link>
 								</li>
 								<li>
-									<Link to="Plan/Lecture">演講</Link>
+									<Link to="/Plan/Lecture">演講</Link>
 								</li>
 								<li>
-									<Link to="Plan/Other">其他活動</Link>
+									<Link to="/Plan/Other">其他活動</Link>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				{/* 版權和社群圖標 */}
-				<div className="max-w-[300px] m-auto mt-[70px] flex flex-row items-center justify-between  lg:flex-row lg:max-w-7xl lg:mx-auto lg:mt-[80px]">
+				<div className="max-w-[300px] m-auto mt-[70px] flex flex-row items-center justify-between md:max-w-7xl md:mx-auto md:px-[40px] lg:mt-[80px]">
 					<p className="bodyText-web text-secondary">Copyright © 2025</p>
 					<div className="flex flex-row space-x-[20px]">
 						<a

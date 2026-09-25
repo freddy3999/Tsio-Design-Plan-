@@ -1,15 +1,15 @@
 import Title from "../small_component/Title";
 import MoreLink from "../small_component/MoreLink";
-import workShop_1 from "../assets/workShop_1.jpg";
-import workShop_2 from "../assets/workShop_2.jpg";
-import workShop_3 from "../assets/workShop_3.jpeg";
+import workShop_1 from "../assets/photos/workShop_1.webp";
+import workShop_2 from "../assets/photos/workShop_2.webp";
+import workShop_3 from "../assets/photos/workShop_3.jpeg";
 
 export default function WorkShop() {
 	return (
 		<section className="flex flex-col items-center">
 			<Title titleEN="workshop" title="工作坊" />
-			<div className="w-full flex space-x-[18%] mt-[var(--title-gap)]">
-				<div className="w-[43%] h-[200px] flex items-end sel md:h-[400px] lg:h-[800px]">
+			<div className="w-full flex justify-end space-x-[18%] mt-[var(--title-gap)] lg:justify-start">
+				<div className="hidden w-[43%] h-[200px] origin-left scale-[1.1] items-end md:h-[400px] lg:flex lg:h-[800px] lg:scale-100">
 					<div className="w-full">
 						<img
 							className="h-full w-full object-cover headline"
@@ -18,7 +18,7 @@ export default function WorkShop() {
 						/>
 					</div>
 				</div>
-				<div className="w-[39%]">
+				<div className="w-[39%] origin-right scale-[1.1] lg:scale-100">
 					<div className="w-full aspect-square">
 						<img
 							className="h-full w-full object-cover headline"
@@ -36,10 +36,19 @@ export default function WorkShop() {
 					我們希望你不只帶回作品，更帶回一種看待生活的方式。
 				</p>
 			</div>
+			<div className="w-[43%] h-[200px] origin-left scale-[1.1] self-start flex items-end md:h-[400px] lg:hidden">
+				<div className="w-full">
+					<img
+						className="h-full w-full object-cover headline"
+						src={workShop_1}
+						alt=""
+					/>
+				</div>
+			</div>
 			<div className="my-auto bodyText-bold [writing-mode:vertical-lr] lg:bodyText-large-bold-web headline mt-[60px] lg:mt-[135px]">
 				<p className="tracking-[0.4em]">﹁一起動手，設下自己的微型儀式。﹂</p>
 			</div>
-			<div className="relative w-[83%] aspect-[11/3.5] mt-[60px] lg:mt-[135px]">
+			<div className="relative w-[83%] origin-center scale-[1.1] aspect-[11/3.5] mt-[60px] lg:mt-[135px] lg:scale-100">
 				<img
 					className="absolute w-full h-full object-cover object-top headline"
 					src={workShop_3}

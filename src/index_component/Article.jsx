@@ -1,23 +1,12 @@
 import Title from "../small_component/Title";
 import MoreLink from "../small_component/MoreLink";
 import CardLayout from "../small_component/CardLayout";
-import articleData from "../data/article.json";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { url } from "../lib/paths";
 import "swiper/css";
 import "swiper/css/pagination";
-
-function getLatestArticles(count = 3) {
-	const dataCopy = [...articleData];
-
-	const sortedData = dataCopy.sort((a, b) => {
-		return new Date(b.date) - new Date(a.date);
-	});
-
-	console.log(sortedData.slice(0, count));
-	return sortedData.slice(0, count);
-}
 
 const ArticleCarousel = ({ latestArticles }) => {
 	const [isMobile, setIsMobile] = useState(false);
@@ -68,10 +57,18 @@ const ArticleCarousel = ({ latestArticles }) => {
 };
 
 export default function Article() {
-	const latestArticles = getLatestArticles(3);
+	const [latestArticles, setLatestArticles] = useState([]);
+
+	useEffect(() => {
+		// API 已依建立時間新→舊排序，取前三筆即為最新文章
+		fetch(url("/api/articles"))
+			.then((r) => r.json())
+			.then((data) => setLatestArticles(data.slice(0, 3)))
+			.catch(() => setLatestArticles([]));
+	}, []);
 
 	return (
-		<section className="w-full mx-auto px-[40px] xl:px-0 lg:max-w-7xl">
+		<section className="w-full mx-auto px-[40px] lg:max-w-7xl">
 			<div className="">
 				<Title titleEN="article" title="報導" />
 			</div>

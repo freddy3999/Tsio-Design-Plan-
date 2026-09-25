@@ -18,7 +18,7 @@ export default function LecturePage() {
 
           <main className="space-y-[10vh] lg:space-y-[20vh] mt-[15vh] lg:mt-[24vh]">
             <div className="w-full mx-auto px-[40px] lg:max-w-7xl">
-              <Breadcrumbs word="Project" word2="Lecture" />
+              <Breadcrumbs word="Plan" word2="Lecture" />
             </div>
 
             <ImageGallery />
@@ -60,7 +60,7 @@ export default function LecturePage() {
                   <img className="w-full h-full object-cover" src={ExhibitionLayout} alt="" />
                 </div>
 
-                <ul className="bodyText lg:bodyText-web space-y-[20px] lg:space-y-[35px]">
+                <ul className="bodyText lg:bodyText-web min-[1180px]:flex-1 space-y-[20px] lg:space-y-[35px]">
                   <li className="space-y-[10px]">
                     <h2>【TALK 01】</h2>
                     <p>
@@ -102,7 +102,7 @@ export default function LecturePage() {
                 />
               </div>
               <p className="bodyText lg:bodyText-web text-center mt-[var(--title-gap-text)]">講座免費參加，部分座位可預約，名額有限。點擊報名連結或現場候補入場。</p>
-              <button class="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block mt-[30px]">
+              <button className="bodyText lg:bodyText-web bg-gray py-3 px-6 mx-auto block mt-[30px]">
                 立即報名 Register Now
               </button>
             </div>

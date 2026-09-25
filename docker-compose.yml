@@ -1,0 +1,23 @@
+# ============================================================
+#  Synology Container Manager「專案」用的 compose 設定
+#  部署前務必修改 ADMIN_PASSWORD 與 JWT_SECRET
+# ============================================================
+services:
+  tsio:
+    build: .
+    container_name: tsio-design
+    ports:
+      # 左邊是 NAS 對外的埠（可自行改），右邊 3001 是容器內的埠（勿改）
+      - "8080:3001"
+    volumes:
+      # 把 NAS 上的 ./data 資料夾掛進容器，保存資料庫與上傳圖片
+      - ./data:/data
+    environment:
+      - DATA_DIR=/data
+      # 網站掛的子路徑，必須與打包時 vite base 一致（見 vite.config.js）
+      - BASE_PATH=/tsio-design
+      # 密碼與密鑰從同目錄的 .env 檔讀取（.env 不進 git，git pull 不會覆蓋）
+      # 部署前在專案資料夾建立 .env（可複製 .env.example）
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+    restart: unless-stopped

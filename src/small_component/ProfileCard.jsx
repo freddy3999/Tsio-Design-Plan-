@@ -48,7 +48,9 @@ export default function ProfileCard({ size, src, name, job, content, variant }) 
                 />
             </div>
             
-            <div className={`${isMovieVariant ? 'space-y-[25px]' : 'space-y-[10px]'}  md:w-[450px] lg:w-[800px]`}>
+            {/* min-[1200px]：圖 250 + space-x 70 + 文字 800 = 1120，加左右 padding 80 → 視窗超過
+                1200px 才有剩餘空間。不吃掉的話 justify-center 會把整張卡往內推、與麵包屑差 40px。 */}
+            <div className={`${isMovieVariant ? 'space-y-[25px]' : 'space-y-[10px]'}  md:w-[450px] lg:w-[800px] min-[1200px]:flex-1`}>
                 <h2 className={titleClassName}>{name}</h2>
                 {!isMovieVariant && (
                     <p className="bodyText lg:bodyText-web">{job}</p>
